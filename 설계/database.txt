@@ -29,11 +29,11 @@ table user_log(
         1 : withdrawal,                                     //회원탈퇴
         2 : login,                                          //로그인
         3 : logout,                                         //로그아웃
-        4 : session_timeout                                 //세션만료
-        5 : pwd_changed                                     //비밀번호 변경
-        6 : nickname_changed                                //닉네임 변경
-        7 : comment_changed                                 //한 줄 소개 변경
-        8 : user_image_changed                              //프로필 사진 변경
+        4 : session_timeout,                                //세션만료
+        5 : pwd_changed,                                    //비밀번호 변경
+        6 : nickname_changed,                               //닉네임 변경
+        7 : comment_changed,                                //한 줄 소개 변경
+        8 : user_image_changed,                             //프로필 사진 변경
     }
 
 
@@ -62,14 +62,14 @@ table space_log(
     timestamp               date not null,                  //로그 기록 시간
 )
     //log_status_code{
-            0 : upload                                      //장소 등록
-            1 : finished                                    //장소 대여 완료
-            2 : deleted                                     //장소 삭제
-            3 : space_image_changed                         //징소 이미지 변경
-            4 : title_changed                               //제목 변경
-            5 : position_changed                            //위치 변경 (위도, 경도를 한 번에 변경)
-            6 : description_changed                         //장소 설명 변경
-            7 : tag_changed                                 //태그 변경
+            0 : upload,                                     //장소 등록
+            1 : finished,                                   //장소 대여 완료
+            2 : deleted,                                    //장소 삭제
+            3 : space_image_changed,                        //징소 이미지 변경
+            4 : title_changed,                              //제목 변경
+            5 : position_changed,                           //위치 변경 (위도, 경도를 한 번에 변경)
+            6 : description_changed,                        //장소 설명 변경
+            7 : tag_changed,                                //태그 변경
     }
 
 
