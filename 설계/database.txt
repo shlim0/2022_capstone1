@@ -1,0 +1,79 @@
+//로그인 서버에서 사용하는 테이블
+
+//사용자 테이블
+table user(
+    user_id                 String primary key,             //아이디
+    user_pwd                String not null,                //비밀번호
+    user_image_path         String,                         //프로필 사진 경로
+    nickname                String not null,                //닉네임
+    comment                 String,                         //한 줄 소개
+    withdrawal              boolean not null,               //탈퇴 여부
+)
+
+//사용자 세션 테이블
+table user_session(
+    session_id              int primary key auto increase,  //세션 아이디 (number)
+    foreign key (user_id) references user not null,         //user table에서 id를 외래키로 참고함
+);
+
+//사용자 로그 테이블
+table user_log(
+    log_id                  int primary key auto increase,  //로그 아이디
+    foreign key (user_id) references user not null,         //사용자 아이디
+    log_status_code         int not null,                   //르그 상태 코드
+    timestamp               date not null,                  //로그 기록 시간
+    ip                      String not null,                //요청 IP
+)
+    //log_status_code{
+        0 : registration,                                   //회원가입
+        1 : withdrawal,                                     //회원탈퇴
+        2 : login,                                          //로그인
+        3 : logout,                                         //로그아웃
+        4 : session_timeout                                 //세션만료
+        5 : pwd_changed                                     //비밀번호 변경
+        6 : nickname_changed                                //닉네임 변경
+        7 : comment_changed                                 //한 줄 소개 변경
+        8 : user_image_changed                              //프로필 사진 변경
+    }
+
+
+
+
+//장소 서버에서 사용하는 테이블
+
+//장소 테이블
+table space(
+    foreign key (user_id) references user not null,         //장소 업로더. user table에서 id를 외래키로 참고함
+    space_id                int primary key auto increase,  //장소 아이디
+    space_image_path        String not null,                //장소 이미지 경로. Token을 사용하여 &로 구분한다
+    title                   String not null,                //장소 제목
+    latitude                double not null,                //장소 위도
+    longitude               double not null,                //장소 경도
+    description             String,                         //장소 설명
+    tags                    String,                         //해시 태그. Token을 사용하여 &로 구분한다
+    status                  int not null,                   //장소 상태. 0 : 대여가능, 1 : 대여완료, 2 : 삭제됨
+)
+
+//장소 로그 테이블
+table space_log(
+    log_id                  int primary key auto increase,  //로그 아이디
+    foreign key (space_id) references space not null,       //장소 아이디
+    log_status_code         int not null,                   //르그 상태 코드
+    timestamp               date not null,                  //로그 기록 시간
+)
+    //log_status_code{
+            0 : upload                                      //장소 등록
+            1 : finished                                    //장소 대여 완료
+            2 : deleted                                     //장소 삭제
+            3 : space_image_changed                         //징소 이미지 변경
+            4 : title_changed                               //제목 변경
+            5 : position_changed                            //위치 변경 (위도, 경도를 한 번에 변경)
+            6 : description_changed                         //장소 설명 변경
+            7 : tag_changed                                 //태그 변경
+    }
+
+
+
+//채팅 서버에서 사용하는 테이블
+
+//채팅 테이블
