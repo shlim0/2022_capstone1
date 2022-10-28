@@ -1,0 +1,34 @@
+//푸시 서버 API
+//알림 서버 -> APNs -> App.
+
+//1. 관심 목록이 갱신되는 경우 
+//2. 채팅이 온 경우
+//3. 시스템에서 전체 공지하는 경우
+
+//관심 목록이 갱신되는 경우
+https://'Server IP'/push-space-changed
+//http request POST
+{
+    int space_id : ,                //변경된 장소 아이디를 받는다.
+    //user 테이블에서 space_id를 기반으로 역색인하여 해당 space_id를 관심 목록에 등록한
+    //user_id를 찾아서 해당하는 user_id에게 push 알림을 날림.
+
+    //hash[user_id] = {space_id1, space_id2, space_id3, ...}
+    //ex. hash['박진혁'] = {'아키하바라', '멘동', '공군본부'}
+    //--> '공군본부'를 관심목록에 담아둔 '박진혁'을 역색인 할수있음.
+}
+
+//HTTP response Status Code
+//200's
+    200 : OK                        //아이디 받음.
+
+
+
+//채팅이 온 경우
+
+//공지 서버에서 공지를 받은 경우
+https://'Server IP'/push-system-message
+//http request POST
+{
+    int id : ,                      //공지 아이디      
+}

@@ -1,0 +1,17 @@
+//채팅 서버 API
+//HTTP 기반이 아닌 TCP 기반 서버를 의미.
+//멀티스레드 기반. 스레드 풀의 job 기반
+//job 단위 : 요청을 받으면 DB에 기록한 뒤 상대방에게 메시지를 전송한다.
+//App - Chat server - App : 1:1 채팅
+
+//opcode_status_code{
+    0 : init,                       //연결 초기화
+    //opcode - session_id
+    //4byte  - 4byte
+    1 : text,                       //메시지
+    //opcode - message_size - message
+    //4byte  - 4byte - 가변
+    2 : image,                      //이미지
+    //opcode - image_size - image   //image_size는 image 사이즈가 몇인지 표시.
+    //4byte  - 4byte - 가변
+}

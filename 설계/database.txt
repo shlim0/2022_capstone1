@@ -3,6 +3,9 @@
 //사용자 테이블
 table user(
     user_id                 String primary key,             //아이디
+    //user_id로 관심목록의 space_id를 elastic search에서 찾는다.
+    //hash[user_id] = {space_id1, space_id2, space_id3, ...}
+    //ex. hash['박진혁'] = {'아키하바라', '멘동', '공군본부'}
     user_pwd                String not null,                //비밀번호
     user_image_path         String,                         //프로필 사진 경로
     nickname                String not null,                //닉네임
@@ -14,7 +17,14 @@ table user(
 table user_session(
     session_id              int primary key auto increase,  //세션 아이디 (number)
     foreign key (user_id) references user not null,         //user table에서 id를 외래키로 참고함
+    lastet_timestamp        date not null,                  //최근 접속 날짜
 );
+
+//APNs 토큰 테이블
+table APNs_token(
+    APNs_token              String primary key,             //Apple APNs 토큰. Device Id.
+    foreign key (user_id) references user,                  //사용자 아이디
+)
 
 //사용자 로그 테이블
 table user_log(
@@ -43,14 +53,15 @@ table user_log(
 
 //장소 테이블
 table space(
-    foreign key (user_id) references user not null,         //장소 업로더. user table에서 id를 외래키로 참고함
     space_id                int primary key auto increase,  //장소 아이디
-    space_image_path        String not null,                //장소 이미지 경로. Token을 사용하여 &로 구분한다
+    //space_id를 통해 space_image_path, tags을 elastic search를 통해 찾는다.
+    //hash[space_id] = { tag1, tag2, tag3, ...}
+    //ex. hash['숭실대'] = {'대학교', '상도동', '고민사거리'}
+    foreign key (user_id) references user not null,         //장소 업로더. user table에서 id를 외래키로 참고함
     title                   String not null,                //장소 제목
     latitude                double not null,                //장소 위도
     longitude               double not null,                //장소 경도
     description             String,                         //장소 설명
-    tags                    String,                         //해시 태그. Token을 사용하여 &로 구분한다
     status                  int not null,                   //장소 상태. 0 : 대여가능, 1 : 대여완료, 2 : 삭제됨
 )
 
@@ -74,6 +85,40 @@ table space_log(
 
 
 
+//시스템 공지 테이블
+table system_alert(
+    id                      int primary key,                //공지 아이디 (id++)
+    timestamp               date,                           //공지 올린 시간
+    message                 String,                         //공지한 내용
+)
+
+
+
 //채팅 서버에서 사용하는 테이블
 
-//채팅 테이블
+//채팅방 관리 테이블
+table chat_rooms(
+    chat_room_id            int primary key,                //채팅방 아이디
+    foreign key (user_id_1) references user not null,       //채팅 참여자1 아이디
+    foreign key (user_id_2) references user not null,       //채팅 참여자2 아이디
+    user_1_status           boolean not null,               //참여자1 나갔는지 안나갔는지 여부 (true/false)
+    user_2_status           boolean not null,               //참여자2 나갔는지 안나갔는지 여부
+)
+
+//특정 채팅방에 메시지 하나에 관한 테이블
+table "chat_room_" + chat_room_id(
+    chat_id                 int primary key,                //채팅 메시지 아이디
+    message                 String,                         //채팅 메시지 내용
+    //message는 chat_status_code이 0일떄는 그냥 메시지고,
+    //1일떄는 iamge_path를 의미하며,
+    //2와 3일 때는 null 값을 갖는다.
+    timestamp               date not null,                  //채팅 메시지 시간
+    chat_status_code        int not null,                   //채팅 메시지 유형
+    //chat_status_code{
+            0 : text,                                       //텍스트
+            1 : image,                                      //이미지.
+            2 : out_1,                                      //참여자1이 채팅방을 나감
+            3 : out_2,                                      //참여자2가 채팅방을 나감
+            //4 : video,
+    }
+)

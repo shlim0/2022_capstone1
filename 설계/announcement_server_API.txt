@@ -1,0 +1,12 @@
+//공지 서버 API
+//관리자 -> 공지서버 -> DB 후
+//공지서버 -> 푸시서버 -> APNs -> App.
+
+
+//공지 내용을 푸시 알림
+https://'Server IP'/push-system-message
+//http request POST
+{
+    String message : ,              //시스템에서 전달할 메시지(공지)
+}
+

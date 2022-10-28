@@ -5,7 +5,7 @@
 https://'Server IP'/space
 //http request POST
 {
-    String session_id : ,           //세션 아이디
+    int session_id : ,              //세션 아이디
     String title : ,                //장소 제목
     String latitude : ,             //장소 위도
     String longitude : ,            //장소 경도
@@ -32,7 +32,7 @@ https://'Server IP'/space
 //200's
     200 : OK                        //업로드 성공
     {
-        String space_id : ,         //장소 아이디
+        int space_id : ,            //장소 아이디
     }
 //500's
     500 : Undefined error           //알 수 없는 에러
@@ -41,11 +41,12 @@ https://'Server IP'/space
 
 
 //장소 수정
+//database 수정후에 push_server로 메시지 전송이 필요함.
 https://'Server IP'/space
 //http request PATCH
 {
-    String session_id : ,           //세션 아이디
-    String space_id : ,             //장소 아이디. 수정된 장소만 iOS -> server로 장소 정보를 보내줌
+    int session_id : ,              //세션 아이디
+    int space_id : ,             //장소 아이디. 수정된 장소만 iOS -> server로 장소 정보를 보내줌
     
     // 하나 이상 수정해야만 수정 되도록 함.
     String status : ,               //장소 상태. 0 : 대여가능, 1 : 대여완료 [옵션]
@@ -62,7 +63,7 @@ https://'Server IP'/space
         tag10                       //N = 10
     ]
     int image_count : ,             //업로드 한 이미지 수 [옵션]
-    images = [                       //image1은 필수. 나머지는 [옵션]
+    images = [                      //image1은 필수. 나머지는 [옵션]
         image1,
         imgae2,
         image3,
@@ -75,7 +76,7 @@ https://'Server IP'/space
 //200's
     200 : OK                        //업로드 성공
     {
-        String space_id : ,         //새 장소 아이디. 버전 관리용. 기존 장소 아이디는 DB에 남아있되 관리자만 접근가능.        
+        int space_id : ,         //새 장소 아이디. 버전 관리용. 기존 장소 아이디는 DB에 남아있되 관리자만 접근가능.        
     }
 //500's
     500 : Undefined error           //알 수 없는 에러
@@ -87,8 +88,8 @@ https://'Server IP'/space
 https://'Server IP'/space
 //http request DELETE               //단, DELETE시 HTTP header에 넣어야함
 {
-    String session_id : ,           //세션 아이디
-    String space_id : ,             //삭제할 장소 아이디
+    int session_id : ,           //세션 아이디
+    int space_id : ,             //삭제할 장소 아이디
 }
 
 //HTTP response Status Code
@@ -129,7 +130,7 @@ https://'Server IP'/user/space-list
 https://'Server IP'/space
 //http request GET                  //query하여 전송한다.
 {   
-    String space_id : ,             //장소 아이디
+    int space_id : ,             //장소 아이디
 }
 
 //HTTP response Status Code
@@ -223,8 +224,8 @@ https://'Server IP'/user/favorite-spaces
 https://'Server IP'/user/favorite-spaces
 //http request POST
 {
-    String session_id : ,           //세션 아이디
-    String space_id : ,             //장소 아이디
+    int session_id : ,           //세션 아이디
+    int space_id : ,             //장소 아이디
 }
 
 //HTTP response Status Code
@@ -241,8 +242,8 @@ https://'Server IP'/user/favorite-spaces
 https://'Server IP'/user/favorite-spaces
 //http request DELETE               //단, DELETE시 HTTP header에 넣어야함
 {
-    String session_id : ,           //세션 아이디
-    String space_id : ,             //장소 아이디
+    int session_id : ,           //세션 아이디
+    int space_id : ,             //장소 아이디
 }
 
 //HTTP response Status Code
@@ -251,4 +252,3 @@ https://'Server IP'/user/favorite-spaces
 
 //500's
     500 : Undefined error           //알 수 없는 에러
-

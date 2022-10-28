@@ -1,0 +1,52 @@
+//채팅 서버 API
+
+//채팅 내용 요청
+https://'Server IP'/chat
+//http request GET
+{
+    int chat_room_id : ,                //채팅방 아이디
+    date timestamp : ,                  //안 읽은 내역부터 보기위한 타임스탬프
+    //timestamp 이후 채팅 기록을 반환받으려 한다.
+}
+
+//채팅방 목록 조회
+https://'Server IP'/chat-list
+//http request GET
+{
+    int session_id : ,                  //세션 아이디    
+}
+//HTTP response Status Code
+//200's
+    200 : OK                            //채팅방 조회 성공
+    {
+        int chat_room_id_count : ,      //채팅방 수. n >= 0.
+        int[] chat_room_ids = [
+            chat_room_id_1,
+            chat_room_id_2,
+            chat_room_id_3,
+            ...
+        ]
+    }
+
+//채팅빙 생성
+https://'Server IP'/chat
+//http request POST
+{
+    int space_id : ,                    //장소 아이디 (해당 장소를 기준으로 채팅이 시작)
+    String user_id_1 : ,                //채팅 참여자 1
+    String user_id_2 : ,                //채팅 참여자 2
+}
+//HTTP response Status Code
+//200's
+    200 : OK                            //채팅방 생성 성공
+{
+    int chat_room_id : ,                //채팅방 아이디
+}
+
+//채팅빙 나가기 (채팅방 삭제)
+https://'Server IP'/chat
+//http request DELETE
+{
+    int chat_room_id : ,                //채팅방 아이디
+    int session_id : ,                  //채팅방 나갈 사람의 세션 아이디
+}
