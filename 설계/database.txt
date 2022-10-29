@@ -3,8 +3,8 @@
 //사용자 테이블
 table user(
     user_id                 String primary key,             //아이디
+    foreign key (image_path_id) references image_path int,  //프로필 사진 경로
     user_pwd                String not null,                //비밀번호
-    user_image_path         String,                         //프로필 사진 경로
     nickname                String not null,                //닉네임
     comment                 String,                         //한 줄 소개
     withdrawal              boolean not null,               //탈퇴 여부
@@ -27,7 +27,7 @@ table APNs_token(
 table user_log(
     log_id                  int primary key auto increase,  //로그 아이디
     foreign key (user_id) references user not null,         //사용자 아이디
-    log_status_code         int not null,                   //르그 상태 코드
+    log_status_code         int not null,                   //로그 상태 코드
     timestamp               date not null,                  //로그 기록 시간
     ip                      String not null,                //요청 IP
 )
@@ -81,8 +81,8 @@ table space_log(
 
 //시스템 공지 테이블
 table system_alert(
-    id                      int primary key,                //공지 아이디 (id++)
-    timestamp               date,                           //공지 올린 시간
+    alert_id                int primary key auto increase,  //공지 아이디
+    timestamp               date not null,                  //공지 올린 시간
     message                 String,                         //공지한 내용
 )
 
@@ -99,9 +99,11 @@ table chat_rooms(
     user_2_status           boolean not null,               //참여자2 나갔는지 안나갔는지 여부
 )
 
-//특정 채팅방에 메시지 하나에 관한 테이블
-table "chat_room_" + chat_room_id(
+//특정 채팅방에 메시지 하나에 관한 테이블. 개월수로 분류함.
+table "chat_room_" + yyyy_mm(
     chat_id                 int primary key,                //채팅 메시지 아이디
+    foreign key (chat_room_id) references chat_rooms not null //채팅방 아이디. 어떤 채팅방인지 
+    foreign key (user_id) references user not null          //사용자 아이디. 누가 말했는지
     message                 String,                         //채팅 메시지 내용
     //message는 chat_status_code이 0일떄는 그냥 메시지고,
     //1일떄는 iamge_path를 의미하며,
