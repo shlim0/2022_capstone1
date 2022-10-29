@@ -14,7 +14,7 @@ https://'Server IP'/push-space-changed
 
 //HTTP response Status Code
 //200's
-    200 : OK                        //아이디 받음.
+    200 : OK                            //아이디 받음.
 
 
 
@@ -22,13 +22,13 @@ https://'Server IP'/push-space-changed
 https://'Server IP'/push-chat
 //http request POST
 {
-    string table_name : ,                      //테이블 이름
-    int chat_id       : ,                      //채팅 아이디
+    string table_name : ,               //테이블 이름
+    int chat_id       : ,               //채팅 아이디
 }
 
 //공지 서버에서 공지를 받은 경우
 https://'Server IP'/push-system-message
 //http request POST
 {
-    int id : ,                      //공지 아이디      
+    int id : ,                          //공지 아이디      
 }
