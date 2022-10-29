@@ -9,13 +9,7 @@
 https://'Server IP'/push-space-changed
 //http request POST
 {
-    int space_id : ,                //변경된 장소 아이디를 받는다.
-    //user 테이블에서 space_id를 기반으로 역색인하여 해당 space_id를 관심 목록에 등록한
-    //user_id를 찾아서 해당하는 user_id에게 push 알림을 날림.
-
-    //hash[user_id] = {space_id1, space_id2, space_id3, ...}
-    //ex. hash['박진혁'] = {'아키하바라', '멘동', '공군본부'}
-    //--> '공군본부'를 관심목록에 담아둔 '박진혁'을 역색인 할수있음.
+    int space_log_id : ,                //변경된 장소의 로그 아이디를 받는다.
 }
 
 //HTTP response Status Code
