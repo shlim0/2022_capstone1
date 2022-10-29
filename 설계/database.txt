@@ -3,9 +3,6 @@
 //사용자 테이블
 table user(
     user_id                 String primary key,             //아이디
-    //user_id로 관심목록의 space_id를 elastic search에서 찾는다.
-    //hash[user_id] = {space_id1, space_id2, space_id3, ...}
-    //ex. hash['박진혁'] = {'아키하바라', '멘동', '공군본부'}
     user_pwd                String not null,                //비밀번호
     user_image_path         String,                         //프로필 사진 경로
     nickname                String not null,                //닉네임
@@ -54,9 +51,6 @@ table user_log(
 //장소 테이블
 table space(
     space_id                int primary key auto increase,  //장소 아이디
-    //space_id를 통해 space_image_path, tags을 elastic search를 통해 찾는다.
-    //hash[space_id] = { tag1, tag2, tag3, ...}
-    //ex. hash['숭실대'] = {'대학교', '상도동', '고민사거리'}
     foreign key (user_id) references user not null,         //장소 업로더. user table에서 id를 외래키로 참고함
     title                   String not null,                //장소 제목
     latitude                double not null,                //장소 위도
@@ -121,4 +115,63 @@ table "chat_room_" + chat_room_id(
             3 : out_2,                                      //참여자2가 채팅방을 나감
             //4 : video,
     }
+)
+
+
+//user_id로 관심목록의 space_id를 elastic search에서 찾는다.
+//hash[user_id] = {space_id1, space_id2, space_id3, ...}
+//ex. hash['박진혁'] = {'아키하바라', '멘동', '공군본부'}
+
+//space_id를 통해 space_image_path, tags을 elastic search를 통해 찾는다.
+//hash[space_id] = { tag1, tag2, tag3, ...}
+//ex. hash['숭실대'] = {'대학교', '상도동', '고민사거리'}
+
+--> elastic search에서 관심목록 테이블로 구조 개선.
+
+//관심목록 테이블
+table favorite(
+    favorite_id             int primary key auto increase,  //관심목록 아이디
+    foreign key (user_id) references user not null,         //사용자 아이디     
+    foreign key (space_id) references space not null,       //관심목록에 등록한 장소 아이디
+)
+
+//관심목록 테이블에서 user_id에 대한 인덱스
+index favorite_user_id_index(
+    foreign key (user_id) references user not null,         //사용자 아이디     
+)
+
+//관심목록 테이블에서 space_id에 대한 인덱스
+index favorite_space_id_index(
+    foreign key (space_id) references space not null,       //관심목록에 등록한 장소 아이디
+)
+
+//이미지 경로 테이블
+table image_path(
+    image_path_id           int primary key auto increase,  //이미지 아이디
+    image_path              String not null,                //이미지 경로. 이미지 서버에서 불러옴.
+)
+
+//장소-이미지간의 테이블
+table space_image(
+    space_image_id          int primary key auto increase,  //장소-이미지 아이디
+    foreign key (space_id) references space not null,       //장소 아이디
+    foreign key (image_path_id) references image_path not null,//이미지 경로 아이디
+)
+
+//태그 테이블
+table tags(
+    tag_id                  int primary key auto increase,  //태그 아이디
+    tag                     String not null,                //태그
+)
+
+//태그 인덱스
+index tag_index(
+    foreign key (tag) references tags not null,             //태그
+)
+
+//장소-태그간의 테이블
+table space_tag(
+    space_tag_id            int primary key auto increase,  //장소-태그 아이디
+    foreign key (space_id) references space not null,       //장소 아이디   
+    foreign key (tag_id) references tags not null,          //태그 아이디   
 )
