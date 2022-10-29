@@ -25,6 +25,12 @@ https://'Server IP'/push-space-changed
 
 
 //채팅이 온 경우
+https://'Server IP'/push-chat
+//http request POST
+{
+    string table_name : ,                      //테이블 이름
+    int chat_id       : ,                      //채팅 아이디
+}
 
 //공지 서버에서 공지를 받은 경우
 https://'Server IP'/push-system-message
