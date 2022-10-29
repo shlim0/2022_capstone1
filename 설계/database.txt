@@ -21,6 +21,7 @@ table user_session(
 table APNs_token(
     APNs_token              String primary key,             //Apple APNs 토큰. Device Id.
     foreign key (user_id) references user,                  //사용자 아이디
+    timestamp               date not null,                  //APNs의 타임스탬프. ex)일주일이 지나면 토큰 삭제
 )
 
 //사용자 로그 테이블
