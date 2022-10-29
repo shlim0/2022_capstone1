@@ -96,8 +96,8 @@ table chat_rooms(
     chat_room_id            int primary key,                //채팅방 아이디
     foreign key (user_id_1) references user not null,       //채팅 참여자1 아이디
     foreign key (user_id_2) references user not null,       //채팅 참여자2 아이디
-    user_1_status           boolean not null,               //참여자1 나갔는지 안나갔는지 여부 (true/false)
-    user_2_status           boolean not null,               //참여자2 나갔는지 안나갔는지 여부
+    user_1_leave            boolean not null,               //참여자1 나갔는지 안나갔는지 여부 (true/false)
+    user_2_leave            boolean not null,               //참여자2 나갔는지 안나갔는지 여부
 )
 
 //특정 채팅방에 메시지 하나에 관한 테이블. 개월수로 분류함.
@@ -114,8 +114,8 @@ table "chat_room_" + yyyy_mm(
     //chat_status_code{
             0 : text,                                       //텍스트
             1 : image,                                      //이미지.
-            2 : out_1,                                      //참여자1이 채팅방을 나감
-            3 : out_2,                                      //참여자2가 채팅방을 나감
+            2 : leave_1,                                    //참여자1이 채팅방을 나감
+            3 : leave_2,                                    //참여자2가 채팅방을 나감
             //4 : video,
     }
 )

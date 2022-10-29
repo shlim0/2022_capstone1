@@ -9,9 +9,9 @@
     //opcode - session_id
     //4byte  - 4byte
     1 : text,                       //메시지
-    //opcode - message_size - message
-    //4byte  - 4byte - 가변
+    //opcode - chat_room_id - message_size - message
+    //4byte  - 4byte - 4byte - 가변
     2 : image,                      //이미지
-    //opcode - image_size - image   //image_size는 image 사이즈가 몇인지 표시.
-    //4byte  - 4byte - 가변
+    //opcode - chat_room_id - image_size - image   //image_size는 image 사이즈가 몇인지 표시.
+    //4byte  - 4byte - 4byte - 가변
 }

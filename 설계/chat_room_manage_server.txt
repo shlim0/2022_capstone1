@@ -28,7 +28,7 @@ https://'Server IP'/chat-list
         ]
     }
 
-//채팅빙 생성
+//채팅방 생성
 https://'Server IP'/chat
 //http request POST
 {
@@ -43,7 +43,7 @@ https://'Server IP'/chat
     int chat_room_id : ,                //채팅방 아이디
 }
 
-//채팅빙 나가기 (채팅방 삭제)
+//채팅방 나가기 (채팅방 삭제)
 https://'Server IP'/chat
 //http request DELETE
 {
