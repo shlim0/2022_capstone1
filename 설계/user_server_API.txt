@@ -69,6 +69,7 @@ https://'Server IP'/user
 //http request DELETE               //단, DELETE시 HTTP Header에 넣어줘야 함
 {
     int session_id : ,              //세션 아이디
+    String user_pwd : ,             //사용자 비밀번호 (App에서 비밀번호 입력받아야 탈퇴가 진행된다)
 }
 //별도 response 없고, ios에서 session_id = null; 처리 하면 됨.
 //서버에서는 해당 session_id로 접속한 모든 디바이스들을 접근 못하도록 해야함.
