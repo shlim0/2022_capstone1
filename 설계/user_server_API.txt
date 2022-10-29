@@ -33,14 +33,15 @@ https://'Server IP'/session
 //http request POST
 {
     String user_id : ,              //아이디
-    String user_pwd : ,             //비밀번호 
+    String user_pwd : ,             //비밀번호
+    String APNs_token : ,           //APNs 토큰 
 }
 
 //login response Status Code
     //200's
     200 : OK                        //로그인 성공
     {
-        int session_id : ,       //세션 아이디. 세션 아이디로 서버가 로그인 여부를 파악한다.
+        int session_id : ,          //세션 아이디. 세션 아이디로 서버가 로그인 여부를 파악한다.
     }
 
     //300's
