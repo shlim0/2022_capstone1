@@ -1,6 +1,9 @@
 ### 제안서 1차
 https://docs.google.com/document/d/16ZoWr5bnjNBcebw2kNV39KhTd4hZZ-cFk--rlu_duu4/edit#
 
+### 제안서 2차
+https://docs.google.com/document/d/1_61M8__TmKsJuRXsSypltYKMy2QdHKCl3y_tWnebzz4/edit?usp=sharing
+
 ### UI 구성
 https://docs.google.com/document/d/1gv6uRtBv0wSokJ2xuYr-xYPux3kCA8RVXOkL0PWTE0s/edit?usp=sharing
 
