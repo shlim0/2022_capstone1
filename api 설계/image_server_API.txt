@@ -1,0 +1,14 @@
+//이미지 서버 API
+//실제 이미지 파일이 저장되는 곳
+
+// path 에 존재하는 이미지 파일 반환
+http://'Server IP'/{path}/{image-name}
+//http request GET
+
+// path 에 존재하는 이미지 파일 개수 리턴
+http://'Server IP'/{path}/image-count
+//http request GET
+
+// path 에 image-name 으로 파일 저장
+http://'Server IP'/{path}/{image-name}
+//http request post
