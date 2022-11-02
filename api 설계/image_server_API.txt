@@ -12,3 +12,4 @@ http://'Server IP'/{path}/image-count
 // path 에 image-name 으로 파일 저장
 http://'Server IP'/{path}/{image-name}
 //http request post
+body: image binary
