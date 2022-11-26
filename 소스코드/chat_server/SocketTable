@@ -1,0 +1,45 @@
+#ifndef __SOCKETTABLE__
+#define __SOCKETTABLE__
+
+#include <unordered_map>
+
+using namespace std;
+
+class SocketTable {
+private:
+    unordered_map<int, int> socket_session_id_table;
+    unordered_map<int, int> session_id_socket_table;
+
+public:
+    void establish_new_session(const int socket, const int session_id);
+    void finish_session(const int socket);
+    int get_socket_by_session_id(const int session_id);
+    int get_session_id_by_socket(const int socket);
+};
+
+// 새 연결 등록시
+void SocketTable::establish_new_session(const int socket, const int session_id) {
+    socket_session_id_table[socket] = session_id;
+    session_id_socket_table[session_id] = socket;
+}
+
+// 서버와 연결 종료시
+void SocketTable::finish_session(const int socket) {
+    if (socket_session_id_table.find(socket) == socket_session_id_table.end()) {
+        return;
+    }
+
+    const int session_id = socket_session_id_table[socket];
+    socket_session_id_table.erase(socket);
+    session_id_socket_table.erase(session_id);
+}
+
+int SocketTable::get_socket_by_session_id(const int session_id) {
+    return session_id_socket_table[session_id];
+}
+
+int SocketTable::get_session_id_by_socket(const int socket) {
+    return socket_session_id_table[socket];
+}
+
+#endif

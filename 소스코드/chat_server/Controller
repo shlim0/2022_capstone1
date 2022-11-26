@@ -1,0 +1,115 @@
+#ifndef __CONTROLLER__
+#define __CONTROLLER__
+
+#include <string>
+#include <vector>
+
+#include "SocketTable"
+#include "Repository"
+#include "DTO/ChatRoom.h"
+#include "ImageManager"
+#include "Config"
+
+using namespace std;
+
+class Controller {
+private:
+    SocketTable socketTable;
+    Repository repository;
+    ImageManager imageManager;
+
+    void send_push_message(const string& table_name, const int chat_id);
+    void send_message(const int socket, const int opcode, const int chat_room_id, const vector<char>& message);
+
+public:
+    void establish_new_session(const int socket, const int session_id); 
+    void finish_session(const int socket);
+    void receive_message(const int socket, const int opcode, const int chat_room_id, const vector<char>& message);
+};
+
+// 서버와 소켓 연결 시작
+void Controller::establish_new_session(const int socket, const int session_id) {
+    socketTable.establish_new_session(socket, session_id);
+}
+
+// 서버와 소켓 연결 종료
+void Controller::finish_session(const int socket) {
+    socketTable.finish_session(socket);
+}
+
+// 서버가 메시지를 수신했을 때
+void Controller::receive_message(const int socket, const int opcode, const int chat_room_id, const vector<char>& message) {
+    const ChatRoom chatroom = repository.get_chat_room_by_chat_room_id(chat_room_id);
+    const int sender_session_id = socketTable.get_session_id_by_socket(socket);
+    const string sender_user_id = repository.get_user_id_by_session_id(sender_session_id);
+    const string chat_room_table = repository.get_and_create_chat_room_table();
+
+    int chat_id = 0;
+    /* 채팅 로그 남기기 */
+    if (opcode == 2) { // image
+        const string image_path = imageManager.get_new_image_path(chat_room_id);
+        imageManager.save(image_path, message);
+        chat_id = repository.save_chat_log(chat_room_table, chat_room_id, sender_user_id, image_path, opcode);
+    }
+    else if (opcode == 1) { // message
+        string msg;
+        for (const char c : message) {
+            msg += c;
+        }
+
+        chat_id = repository.save_chat_log(chat_room_table, chat_room_id, sender_user_id, msg, opcode);
+    }
+    else {
+        // error
+    }
+    /*******************/
+
+    /* 상대방에게 메시지 전송 */
+    const string receiver_user_id = (chatroom.user_id_1 == sender_user_id) ? chatroom.user_id_2 : chatroom.user_id_1;
+    const vector<int> receiver_session_ids = repository.get_session_id_list_by_user_id(receiver_user_id);
+
+    for (const int receiver_session_id : receiver_session_ids) {
+        const int receiver_socket = socketTable.get_socket_by_session_id(receiver_session_id);
+        send_message(receiver_socket, opcode, chat_room_id, message);
+        send_push_message(chat_room_table, chat_id);
+    }
+    /**************************/
+}
+
+// 푸시 서버로 채팅 알림 보냄 (json)
+void Controller::send_push_message(const string& table_name, const int chat_id) {
+    int sock = socket(PF_INET, SOCK_STREAM, 0);
+    struct sockaddr_in serv_addr;
+
+    memset(&serv_addr, 0, sizeof(serv_addr));
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_addr.s_addr = inet_addr(PUSH_SERVER);
+    serv_addr.sin_port = htons(PUSH_SERVER_PORT);
+
+    if (connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) == -1) {
+        printf("send_push_message(), connect() error\n");
+        return;
+    }
+
+    const string body = "{ table_name: " + table_name + ", chat_id: " + to_string(chat_id) + " }";
+    const string message = "POST " + PUSH_PATH + " HTTP/1.1\r\n"
+    + "Content-Type: application/json\r\n"
+    + "Content-Length: " + to_string(body.size()) + "\r\n";
+    + "\r\n"
+    + body;
+
+    write(sock, body.c_str(), body.size());
+    close(sock);
+}
+
+// 소켓으로 채팅 보냄
+void Controller::send_message(const int socket, const int opcode, const int chat_room_id, const vector<char>& message) {
+    write(socket, &opcode, sizeof(opcode));
+    write(socket, &chat_room_id, sizeof(chat_room_id));
+    const int message_size = (int)message.size();
+    write(socket, &message_size, sizeof(message_size));
+    write(socket, &message[0], message.size());
+}
+
+#endif

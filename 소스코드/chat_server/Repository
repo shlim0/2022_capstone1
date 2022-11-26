@@ -1,0 +1,191 @@
+#ifndef __REPOSITORY__
+#define __REPOSITORY__
+
+#include <string>
+#include <vector>
+#include <ctime>
+
+#include "DTO/ChatRoom.h"
+#include "/usr/include/mysql/mysql.h"
+#include "Config"
+
+class Repository {
+private:
+    MYSQL *conn;
+
+public:
+    Repository();
+    ~Repository();
+    string get_user_id_by_session_id(const int session_id);
+    vector<int> get_session_id_list_by_user_id(const string& user_id);
+    ChatRoom get_chat_room_by_chat_room_id(const int chat_room_id);
+    int save_chat_log(const string& table, const int chat_room_id, const string& user_id, const string& message, const int opcode);
+    string get_and_create_chat_room_table(void);
+};
+
+// 생성자에서 데이터베이스 커넥션 생성
+Repository::Repository() {
+    if (!(this->conn = mysql_init((MYSQL*)NULL))) {
+        printf("init fail\n");
+        exit(1);
+    }
+
+    printf("mysql_init sucsess.\n");
+
+    if(!mysql_real_connect(this->conn, DB_SERVER, DB_USER, DB_PASSWORD, NULL, DB_PORT, NULL, 0)){
+        printf("connect error.\n");     //DB접속 (MYSQL*, host, id, pw, null, port, 0)
+        exit(1);
+    }
+
+    printf("mysql_real_connect suc.\n");
+
+    if(mysql_select_db(this->conn, DB_DATABASE) != 0){
+        mysql_close(this->conn);
+        printf("select_db fail.\n");
+        exit(1);
+    }
+
+    printf("select mydb suc.\n");
+}
+
+Repository::~Repository() {
+    mysql_close(this->conn);
+}
+
+// user id로 session id 알아내기
+string Repository::get_user_id_by_session_id(const int session_id) {
+    const string query = "select user_id from user_session where session_id = " + session_id;
+
+    if (mysql_query(this->conn, query.c_str())) {
+        printf("get_user_id_by_session_id() error\n");
+        exit(1);
+    }
+
+    MYSQL_RES *res = mysql_store_result(this->conn);
+
+    MYSQL_ROW row;
+    string result;
+    while ((row = mysql_fetch_row(res)) != nullptr) {
+        result = string(row[0]);
+    }
+
+    return result;
+}
+
+// user id로 session id를 전부 알아내기
+vector<int> Repository::get_session_id_list_by_user_id(const string& user_id) {
+    const string query = "select session_id from user_session where user_id = " + user_id;
+
+    if (mysql_query(this->conn, query.c_str())) {
+        printf("get_session_id_list_by_user_id() error\n");
+        exit(1);
+    }
+
+    MYSQL_RES *res = mysql_store_result(this->conn);
+
+    vector<int> results;
+    MYSQL_ROW row;
+    while ((row = mysql_fetch_row(res)) != nullptr) {
+        results.push_back(stoi(string(row[0])));
+    }
+
+    return results;
+}
+
+// chat room id 로 chat room 정보 얻기
+ChatRoom Repository::get_chat_room_by_chat_room_id(const int chat_room_id) {
+    const string query = "select * from chat_rooms where chat_room_id = " + chat_room_id;
+
+    if (mysql_query(this->conn, query.c_str())) {
+        printf("get_chat_room_by_chat_room_id() error\n");
+        exit(1);
+    }
+
+    MYSQL_RES *res = mysql_store_result(this->conn);
+
+    ChatRoom result;
+    MYSQL_ROW row;
+    while ((row = mysql_fetch_row(res)) != nullptr) {
+        result.room_id = chat_room_id;
+        result.user_id_1 = stoi(string(row[1]));
+        result.user_id_2 = stoi(string(row[2]));
+        result.user_1_status = stoi(string(row[3])) == 1;
+        result.user_2_status = stoi(string(row[4])) == 1;
+    }
+
+    return result;
+}
+
+// 채팅 로그 남기기. 리턴값은 chat id
+int Repository::save_chat_log(const string& table, const int chat_room_id, const string& user_id, const string& message, const int opcode) {
+    /* 로그 남길 시간 구하기 */
+    struct tm curr_tm;
+    time_t current_time = time(nullptr);
+    localtime_r(&current_time, &curr_tm);
+
+    const string timestamp = to_string(curr_tm.tm_year + 1900) + "-" + to_string(curr_tm.tm_mon + 1) + "-" + to_string(curr_tm.tm_mday) + " " 
+    + to_string(curr_tm.tm_hour) + ":" + to_string(curr_tm.tm_min) + ":" + to_string(curr_tm.tm_sec);
+    /*************************/
+
+    const int chat_status_code = opcode - 1;
+
+    /* 추가할 id 구하기 */
+    string query = "SELECT count(*) FROM " + table;
+    if (mysql_query(this->conn, query.c_str())) {
+        printf("save_chat_log() select error\n");
+        exit(1);
+    }
+
+    MYSQL_RES *res = mysql_store_result(this->conn);
+    const MYSQL_ROW row = mysql_fetch_row(res);
+    const int chat_id = stoi(string(row[0]));
+    /*******************/
+
+    /* 로그 남기기 */
+    query = "INSERT INTO " + table + "(chat_id, chat_room_id, user_id, message, timestamp, chat_status_code) "
+    + "VALUES(" + to_string(chat_id) + ", " + to_string(chat_room_id) + ", " + user_id + ", " + message + ", " + timestamp + ", " + to_string(chat_status_code) + ")";
+
+    if (mysql_query(this->conn, query.c_str())) {
+        printf("save_chat_log() insert error\n");
+        exit(1);
+    }
+    /*************/
+
+    return chat_id;
+}
+
+// 월에 맞는 chat room table 이름 반환. 테이블이 존재하지 않으면 생성 후 반환
+string Repository::get_and_create_chat_room_table(void) {
+    /* 테이블 이름 구하기 */
+    struct tm curr_tm;
+    time_t current_time = time(nullptr);
+    localtime_r(&current_time, &curr_tm);
+    const int current_year = curr_tm.tm_year + 1900;
+    const int current_month = curr_tm.tm_mon + 1;
+
+    string table_name = "chat_room_" + to_string(current_year) + "_";
+    if (current_month < 10) {
+        table_name += "0";
+    }
+
+    table_name += to_string(current_month);
+    /***********************/
+
+    /* 테이블 없으면 생성 */
+    const string query = "CREATE TABLE IF NOT EXISTS " + table_name 
+    + "(chat_id INT PRIMARY KEY, "
+    + "chat_room_id INT NOT NULL, "
+    + "user_id VARCHAR(20) NOT NULL, "
+    + "message VARCHAR(1000), "
+    + "timestamp DATE NOT NULL, "
+    + "chat_status_code NOT NULL, "
+    + "FOREIGN KEY (chat_room_id) REFERENCES chat_rooms ON UPDATE CASCADE, "
+    + "FOREIGN KEY (user_id) REFERENCES user ON UPDATE CASCADE)";
+
+    mysql_query(this->conn, query.c_str());
+    /*********************/
+
+    return table_name;
+}
+
+#endif

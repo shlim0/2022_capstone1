@@ -1,0 +1,25 @@
+#ifndef __CONFIG__
+#define __CONFIG__
+
+#include <string>
+
+using namespace std;
+
+constexpr int PORT = 12345; // 포트번호
+constexpr int EPOLL_SIZE = 10000; // epoll 크기
+constexpr int BUFFER_SIZE = 1 * 1000 * 1000; // 버퍼 크기
+
+constexpr char *DB_SERVER = (char*)"127.0.0.1"; // 데이터베이스 ip
+constexpr int DB_PORT = 3306; // 데이터베이스 포트
+constexpr char *DB_USER = (char*)"root"; // 데이터베이스 user
+constexpr char *DB_PASSWORD = (char*)"catharsis"; // 데이터베이스 비밀번호
+constexpr char *DB_DATABASE = (char*)"catharsis"; // 데이터베이스 이름
+
+constexpr char *IMAGE_SERVER = (char*)"0.0.0.0"; // 이미지 서버 ip
+constexpr int IMAGE_SERVER_PORT = 11111; // 이미지 서버 포트
+
+constexpr char *PUSH_SERVER = (char*)"0.0.0.0"; // 이미지 서버 ip
+constexpr int PUSH_SERVER_PORT = 11111; // 이미지 서버 포트
+const string PUSH_PATH = "/push-chat"; // 푸시 서버에 알림 넣는 경로
+
+#endif
