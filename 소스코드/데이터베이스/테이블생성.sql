@@ -16,20 +16,20 @@ CREATE TABLE user (
 CREATE TABLE user_session (
 	session_id INT PRIMARY KEY AUTO_INCREMENT,
 	user_id VARCHAR(20) NOT NULL,
-	last_timestamp DATE NOT NULL,
+	last_timestamp DATETIME NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES user(user_id) ON UPDATE CASCADE
 );
 
 CREATE TABLE system_alert (
 	alert_id INT PRIMARY KEY AUTO_INCREMENT,
-	timestamp DATE NOT NULL,
+	timestamp DATETIME NOT NULL,
 	message VARCHAR(255)
 );
 
 CREATE TABLE APNs_token (
 	APNs_token VARCHAR(100) PRIMARY KEY,
 	user_id VARCHAR(20) NOT NULL,
-	timestamp DATE NOT NULL,
+	timestamp DATETIME NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES user(user_id) ON UPDATE CASCADE
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE user_log (
 	log_id INT PRIMARY KEY AUTO_INCREMENT,
 	user_id VARCHAR(20) NOT NULL,
 	log_status_code INT NOT NULL,
-	timestamp DATE NOT NULL,
+	timestamp DATETIME NOT NULL,
 	ip VARCHAR(100) NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES user(user_id) ON UPDATE CASCADE
 );
@@ -88,7 +88,7 @@ CREATE TABLE space_log (
 	log_id INT PRIMARY KEY AUTO_INCREMENT,
 	space_id INT NOT NULL,
 	log_status_code INT NOT NULL,
-	timestamp DATE NOT NULL,
+	timestamp DATETIME NOT NULL,
 	FOREIGN KEY (space_id) REFERENCES space(space_id) ON UPDATE CASCADE
 );
 
