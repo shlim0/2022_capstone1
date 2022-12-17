@@ -170,7 +170,7 @@ https://'Server IP'/space
 
 //장소 검색 (태그 검색 + 위치 검색)
 https://'Server IP'/search
-//http request GET
+//http request POST
 {
     String tag : ,                  //검색할 태그(키워드) [옵션]
     String latitude : ,             //사용자 현재 위치의 위도
