@@ -1,9 +1,10 @@
 package catharsis.announcement_server.Controller;
 
 import catharsis.announcement_server.Config;
+import catharsis.announcement_server.VO.SystemMessageID;
 import catharsis.announcement_server.Repository.SystemAlertRepository;
 import catharsis.announcement_server.Entity.SystemAlert;
-import catharsis.announcement_server.PostVO.SystemMessage;
+import catharsis.announcement_server.VO.SystemMessage;
 import catharsis.announcement_server.Validation;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
@@ -76,7 +77,7 @@ public class Controller {
         //푸시 서버로 DB에 삽입된 공지의 alert_id를 POST
         webClient.post()
                 .uri("http://" + Config.PUSH_SERVER_IP + Config.PUSH_SERVER_PORT + Config.POST_PATH)
-                .body(Mono.just(systemAlert.getAlert_id()), Integer.class)
+                .body(Mono.just(new SystemMessageID(systemAlert.getAlert_id())), SystemMessageID.class)
                 .retrieve()
                 .bodyToMono(Void.class);
     }

@@ -1,6 +1,6 @@
 package catharsis.announcement_server;
 
-import catharsis.announcement_server.PostVO.SystemMessage;
+import catharsis.announcement_server.VO.SystemMessage;
 
 public class Validation {
 
