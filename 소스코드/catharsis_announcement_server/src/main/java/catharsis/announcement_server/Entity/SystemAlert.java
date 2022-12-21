@@ -1,6 +1,6 @@
 package catharsis.announcement_server.Entity;
 
-import catharsis.announcement_server.Config;
+import catharsis.announcement_server.Config.Config;
 import jakarta.persistence.*;
 import lombok.Data;
 

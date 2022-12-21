@@ -1,9 +1,4 @@
-package catharsis.announcement_server;
-
-import catharsis.announcement_server.Repository.SystemAlertRepository;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
+package catharsis.announcement_server.Config;
 public class Config {
 
     public static final String PUSH_SERVER_IP = "119.192.59.11"; //푸시서버 IP 주소
@@ -15,11 +10,5 @@ public class Config {
     public static final int MAX_MESSAGE_LENGTH = 255; //공지 메시지 최대 길이
 
     public static final int TIME_OUT_MS = 5000; // 타임아웃 제한시간(1000MS = 1초)
-
-    private final SystemAlertRepository systemAlertRepository;
-
-    public Config(SystemAlertRepository systemAlertRepository) {
-        this.systemAlertRepository = systemAlertRepository;
-    }
 
 }
