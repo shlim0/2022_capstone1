@@ -1,4 +1,4 @@
-package catharsis.announcement_server.PostVO;
+package catharsis.announcement_server.VO;
 
 import lombok.Data;
 
