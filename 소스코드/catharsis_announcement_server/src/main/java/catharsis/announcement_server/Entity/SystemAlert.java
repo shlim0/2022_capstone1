@@ -1,6 +1,5 @@
 package catharsis.announcement_server.Entity;
 
-import catharsis.announcement_server.Config.Config;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,7 +18,7 @@ public class SystemAlert {
     @Column(name = "timestamp", nullable = false)
     private Timestamp timestamp;
 
-    @Column(name = "message", length = Config.MAX_MESSAGE_LENGTH)
+    @Column(name = "message")
     private String message;
 
     public SystemAlert(final String message, final Timestamp timestamp) {
