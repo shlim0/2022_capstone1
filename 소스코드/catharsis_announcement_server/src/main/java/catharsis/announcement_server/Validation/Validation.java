@@ -1,7 +1,5 @@
 package catharsis.announcement_server.Validation;
 
-import static catharsis.announcement_server.Config.Config.*;
-
 public class Validation {
 
     //systemMessage를 검증하여 유효하면 true, 그렇지 않으면 false 반환.

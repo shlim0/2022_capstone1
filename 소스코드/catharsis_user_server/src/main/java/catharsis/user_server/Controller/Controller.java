@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,14 +22,22 @@ import java.util.Optional;
 @RestController
 public class Controller {
 
-    @Autowired
-    private Repository repository;
+    private final Repository repository;
+
+    private final Validation validation;
+
+    private final ImageManager imageManager;
 
     @Autowired
-    private Validation validation;
-
-    @Autowired
-    private ImageManager imageManager;
+    public Controller (
+            final Repository repository,
+            final Validation validation,
+            final ImageManager imageManager
+    ) {
+        this.repository = repository;
+        this.validation = validation;
+        this.imageManager = imageManager;
+    }
 
     //회원가입
     @PostMapping("/user")

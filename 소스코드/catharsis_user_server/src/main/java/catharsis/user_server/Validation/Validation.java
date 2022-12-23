@@ -9,8 +9,12 @@ import static catharsis.user_server.Config.Config.*;
 
 public class Validation {
 
+    private final Repository repository;
+
     @Autowired
-    private Repository repository;
+    public Validation(final Repository repository) {
+        this.repository = repository;
+    }
 
     //ID 검증
     public boolean user_id_validation(final String user_id) {

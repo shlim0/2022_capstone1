@@ -1,6 +1,6 @@
 package catharsis.announcement_server;
 
-import catharsis.announcement_server.Repository.SystemAlertRepository;
+import catharsis.announcement_server.Repository.Repository;
 import catharsis.announcement_server.Validation.Validation;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
@@ -17,14 +17,15 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
-import static catharsis.announcement_server.Config.Config.*;
+import static catharsis.announcement_server.Config.Config.PUSH_SERVER;
+import static catharsis.announcement_server.Config.Config.TIME_OUT_MS;
 
 @Configuration
 public class SpringConfig {
-    private final SystemAlertRepository systemAlertRepository;
 
-    public SpringConfig(final SystemAlertRepository systemAlertRepository) {
-        this.systemAlertRepository = systemAlertRepository;
+    @Bean
+    public Repository repository() {
+        return new Repository();
     }
 
     @Bean
@@ -33,21 +34,22 @@ public class SpringConfig {
     }
 
     @Bean
-    public WebClient webclient() {
-            HttpClient httpClient = HttpClient.create()
-                    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, TIME_OUT_MS)
-                    .responseTimeout(Duration.ofMillis(TIME_OUT_MS))
-                    .doOnConnected(conn ->
-                            conn.addHandlerLast(new ReadTimeoutHandler(TIME_OUT_MS, TimeUnit.MILLISECONDS))
-                                    .addHandlerLast(new WriteTimeoutHandler(TIME_OUT_MS, TimeUnit.MILLISECONDS)));
+    public WebClient webClient() {
+        HttpClient httpClient = HttpClient.create()
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, TIME_OUT_MS)
+                .responseTimeout(Duration.ofMillis(TIME_OUT_MS))
+                .doOnConnected(conn ->
+                        conn.addHandlerLast(new ReadTimeoutHandler(TIME_OUT_MS, TimeUnit.MILLISECONDS))
+                                .addHandlerLast(new WriteTimeoutHandler(TIME_OUT_MS, TimeUnit.MILLISECONDS)));
 
-            WebClient webClient = WebClient.builder()
-                    .baseUrl("http://" + PUSH_SERVER)
-                    .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .defaultUriVariables(Collections.singletonMap("uri", "http://" + PUSH_SERVER))
-                    .clientConnector(new ReactorClientHttpConnector(httpClient))
-                    .build();
+        WebClient webClient = WebClient.builder()
+                .baseUrl("http://" + PUSH_SERVER)
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .defaultUriVariables(Collections.singletonMap("uri", "http://" + PUSH_SERVER))
+                .clientConnector(new ReactorClientHttpConnector(httpClient))
+                .build();
 
-            return webClient;
+        return webClient;
     }
+
 }
