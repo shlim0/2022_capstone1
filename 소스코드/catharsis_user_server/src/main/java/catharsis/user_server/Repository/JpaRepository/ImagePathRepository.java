@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface ImagePathRepository extends JpaRepository<ImagePath, Integer> {
 
-    Optional<ImagePath> findByImagePath (@Param("imagePath") final String ImagePath);
+    public Optional<ImagePath> findByImagePath (@Param("imagePath") final String ImagePath);
 
 }

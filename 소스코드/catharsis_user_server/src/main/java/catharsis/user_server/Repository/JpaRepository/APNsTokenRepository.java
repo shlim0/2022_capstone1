@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface APNsTokenRepository extends JpaRepository<APNsToken, String> {
-    List<APNsToken> findAllByUserId (@Param("userId") final String UserId);
+    public List<APNsToken> findAllByUserId (@Param("userId") final String UserId);
 
 }

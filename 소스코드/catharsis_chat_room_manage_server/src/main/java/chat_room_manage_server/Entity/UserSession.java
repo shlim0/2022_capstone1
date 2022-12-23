@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
+import static chat_room_manage_server.Config.Config.MAX_INFORMATION_LENGTH;
+
 @Data
 @Entity
 @Table(name = "user_session")
@@ -15,7 +17,7 @@ public class UserSession {
     @Column(name = "session_id", nullable = false)
     private Integer sessionId;
 
-    @Column(name = "user_id", nullable = false, length = 20)
+    @Column(name = "user_id", nullable = false, length = MAX_INFORMATION_LENGTH)
     private String userId;
 
     @Column(name = "latest_timestamp", nullable = false)

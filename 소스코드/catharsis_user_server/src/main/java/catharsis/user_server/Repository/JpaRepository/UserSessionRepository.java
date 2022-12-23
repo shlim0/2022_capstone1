@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface UserSessionRepository extends JpaRepository<UserSession, Integer> {
 
-    List<UserSession> findAllByUserId(@Param("userId") final String UserId);
+    public List<UserSession> findAllByUserId(@Param("userId") final String UserId);
 
 }
