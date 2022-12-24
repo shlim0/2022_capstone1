@@ -14,7 +14,7 @@ import static catharsis.user_server.Config.Config.*;
 public class ImageManager {
 
     public String get_new_image_path(final String dir) throws Exception {
-        URL url = new URL(Paths.get(IMAGE_SERVER, dir, "image-count").toString());
+        URL url = new URL(Paths.get(IMAGE_SERVER, dir).toString());
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
         conn.setRequestMethod("GET");
         conn.connect();

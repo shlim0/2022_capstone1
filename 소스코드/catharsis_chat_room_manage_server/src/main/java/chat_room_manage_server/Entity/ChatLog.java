@@ -9,6 +9,7 @@ import static chat_room_manage_server.Config.Config.MAX_INFORMATION_LENGTH;
 
 @Data
 @Entity
+//@Table(name = "chat_log")
 public class ChatLog {
 
     @Id
