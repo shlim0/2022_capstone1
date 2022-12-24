@@ -8,17 +8,31 @@
 import SwiftUI
 
 struct HomeTabView: View{
+    @State private var searchText = ""
+    
     var body: some View {
-        ZStack {
-            Circle()
-                .frame(width: 300, height: 300)
-                .foregroundColor(.green)
+        VStack {
+            //홈 화면 배너
             
-            Text("\(3)")
-                .font(.system(size: 70))
-                .foregroundColor(.white)
-                .fontWeight(.bold)
+            Image("설악산")
+                .resizable()
+                .frame(width: 400, height: 150)
+                .clipShape(Rectangle())
+            //검색 창
+            SearchBar(text: $searchText)
+                .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+            
+            ScrollView{
+                SpaceView()
+            }
+            .frame(height: 480)
         }
     }
-    
+}
+
+
+struct HomeTabView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeTabView()
+    }
 }

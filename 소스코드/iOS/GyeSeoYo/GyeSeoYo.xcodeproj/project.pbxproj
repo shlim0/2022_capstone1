@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		A61AFD762955481400CAC91B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A61AFD742955481400CAC91B /* Model.xcdatamodeld */; };
 		A61AFD7829554FFA00CAC91B /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61AFD7729554FFA00CAC91B /* UserViewModel.swift */; };
+		A658670F2957326900B41EDF /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658670E2957326900B41EDF /* Space.swift */; };
 		A6852655294EC36100DAF29C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6852654294EC36100DAF29C /* LoginView.swift */; };
 		A6852657294EC95B00DAF29C /* AfterLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6852656294EC95B00DAF29C /* AfterLoginView.swift */; };
 		A68CF4BB29555EB80021F5CC /* SpaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CF4BA29555EB80021F5CC /* SpaceViewModel.swift */; };
 		A68CF4BD2955654E0021F5CC /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CF4BC2955654E0021F5CC /* RegistrationView.swift */; };
 		A68CF4BF2955855A0021F5CC /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CF4BE2955855A0021F5CC /* SessionViewModel.swift */; };
+		A6CFA6662956E36C009BE8E6 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA6652956E36C009BE8E6 /* SearchBar.swift */; };
+		A6CFA66A2956E3BD009BE8E6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA6692956E3BD009BE8E6 /* SearchView.swift */; };
+		A6CFA66C2956E59F009BE8E6 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA66B2956E59F009BE8E6 /* SpaceView.swift */; };
+		A6CFA66E2956E9DD009BE8E6 /* SpaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA66D2956E9DD009BE8E6 /* SpaceDetailView.swift */; };
 		A6E1BA24294E154D00921BFD /* GyeSeoYoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E1BA23294E154D00921BFD /* GyeSeoYoApp.swift */; };
 		A6E1BA28294E154E00921BFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E1BA27294E154E00921BFD /* Assets.xcassets */; };
 		A6E1BA2B294E154E00921BFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E1BA2A294E154E00921BFD /* Preview Assets.xcassets */; };
@@ -34,11 +39,16 @@
 /* Begin PBXFileReference section */
 		A61AFD752955481400CAC91B /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		A61AFD7729554FFA00CAC91B /* UserViewModel.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		A658670E2957326900B41EDF /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		A6852654294EC36100DAF29C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A6852656294EC95B00DAF29C /* AfterLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterLoginView.swift; sourceTree = "<group>"; };
 		A68CF4BA29555EB80021F5CC /* SpaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewModel.swift; sourceTree = "<group>"; };
 		A68CF4BC2955654E0021F5CC /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		A68CF4BE2955855A0021F5CC /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
+		A6CFA6652956E36C009BE8E6 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBar.swift; path = "../../../../../../버린 자식 iOS/GyeSeoYo/GyeSeoYo/SearchBar.swift"; sourceTree = "<group>"; };
+		A6CFA6692956E3BD009BE8E6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		A6CFA66B2956E59F009BE8E6 /* SpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceView.swift; sourceTree = "<group>"; };
+		A6CFA66D2956E9DD009BE8E6 /* SpaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDetailView.swift; sourceTree = "<group>"; };
 		A6E1BA20294E154D00921BFD /* GyeSeoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GyeSeoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E1BA23294E154D00921BFD /* GyeSeoYoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyeSeoYoApp.swift; sourceTree = "<group>"; };
 		A6E1BA27294E154E00921BFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,14 +78,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A63E38CB2954A4FB0055BD49 /* ViewModel */ = {
+		A63E38CB2954A4FB0055BD49 /* ViewModel(CoreData) */ = {
 			isa = PBXGroup;
 			children = (
 				A61AFD7729554FFA00CAC91B /* UserViewModel.swift */,
 				A68CF4BA29555EB80021F5CC /* SpaceViewModel.swift */,
 				A68CF4BE2955855A0021F5CC /* SessionViewModel.swift */,
 			);
-			path = ViewModel;
+			path = "ViewModel(CoreData)";
+			sourceTree = "<group>";
+		};
+		A658670D2957325E00B41EDF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A658670E2957326900B41EDF /* Space.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A6CFA6642956E364009BE8E6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A6CFA6652956E36C009BE8E6 /* SearchBar.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		A6E1BA17294E154D00921BFD = {
@@ -97,8 +123,10 @@
 		A6E1BA22294E154D00921BFD /* GyeSeoYo */ = {
 			isa = PBXGroup;
 			children = (
+				A658670D2957325E00B41EDF /* Model */,
+				A6CFA6642956E364009BE8E6 /* Util */,
 				A61AFD742955481400CAC91B /* Model.xcdatamodeld */,
-				A63E38CB2954A4FB0055BD49 /* ViewModel */,
+				A63E38CB2954A4FB0055BD49 /* ViewModel(CoreData) */,
 				A6E1BA31294E155E00921BFD /* View */,
 				A6E1BA23294E154D00921BFD /* GyeSeoYoApp.swift */,
 				A6E1BA27294E154E00921BFD /* Assets.xcassets */,
@@ -118,14 +146,17 @@
 		A6E1BA31294E155E00921BFD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A6CFA66B2956E59F009BE8E6 /* SpaceView.swift */,
 				A6E1BA32294E155E00921BFD /* ButtonView */,
 				A6E1BA36294E155E00921BFD /* TabView */,
 				A6E1BA3E294E155E00921BFD /* MainView.swift */,
 				A68CF4BC2955654E0021F5CC /* RegistrationView.swift */,
+				A6CFA6692956E3BD009BE8E6 /* SearchView.swift */,
 				A6E1BA3F294E155E00921BFD /* SettingView.swift */,
 				A6E1BA40294E155E00921BFD /* MyPageView.swift */,
 				A6852654294EC36100DAF29C /* LoginView.swift */,
 				A6852656294EC95B00DAF29C /* AfterLoginView.swift */,
+				A6CFA66D2956E9DD009BE8E6 /* SpaceDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,8 +254,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A658670F2957326900B41EDF /* Space.swift in Sources */,
 				A6E1BA46294E155E00921BFD /* ChatListTabView.swift in Sources */,
 				A68CF4BB29555EB80021F5CC /* SpaceViewModel.swift in Sources */,
+				A6CFA66E2956E9DD009BE8E6 /* SpaceDetailView.swift in Sources */,
 				A6E1BA4B294E155E00921BFD /* MainView.swift in Sources */,
 				A6E1BA24294E154D00921BFD /* GyeSeoYoApp.swift in Sources */,
 				A6852655294EC36100DAF29C /* LoginView.swift in Sources */,
@@ -232,11 +265,14 @@
 				A6852657294EC95B00DAF29C /* AfterLoginView.swift in Sources */,
 				A61AFD7829554FFA00CAC91B /* UserViewModel.swift in Sources */,
 				A68CF4BF2955855A0021F5CC /* SessionViewModel.swift in Sources */,
+				A6CFA66C2956E59F009BE8E6 /* SpaceView.swift in Sources */,
 				A6E1BA42294E155E00921BFD /* ButtonViewTemplete.swift in Sources */,
 				A6E1BA44294E155E00921BFD /* FavoriteListTabView.swift in Sources */,
 				A61AFD762955481400CAC91B /* Model.xcdatamodeld in Sources */,
+				A6CFA66A2956E3BD009BE8E6 /* SearchView.swift in Sources */,
 				A6E1BA43294E155E00921BFD /* MyPageButtonView.swift in Sources */,
 				A6E1BA4D294E155E00921BFD /* MyPageView.swift in Sources */,
+				A6CFA6662956E36C009BE8E6 /* SearchBar.swift in Sources */,
 				A68CF4BD2955654E0021F5CC /* RegistrationView.swift in Sources */,
 				A6E1BA4C294E155E00921BFD /* SettingView.swift in Sources */,
 				A6E1BA47294E155E00921BFD /* HomeTabView.swift in Sources */,
@@ -379,6 +415,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -408,6 +445,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

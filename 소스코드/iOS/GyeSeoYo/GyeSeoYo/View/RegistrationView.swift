@@ -39,8 +39,11 @@ struct RegistrationView: View{
                 TextField("자기소개 입력 (선택)", text: $comment)
                     .modifier(FieldStyle())
                     .autocapitalization(.none)
-            }
+            }.padding()
+                .padding(.top, 120)
+                .ignoresSafeArea()
             
+//회원 가입 완료 버튼
             Button {
                 userViewModel.addUser(id: id, pwd: sessionViewModel.toSHA256(pwd), nickname: nickname, comment: comment)
                 //                if pwd != pwdCheck {
@@ -58,12 +61,12 @@ struct RegistrationView: View{
                     .background(Color.blue)
                     .cornerRadius(10.0)
             }
-            //            .alert(isPresented: $isPwdValid) {
-            //                Alert(title: Text("불일치"), message: Text("아이디 또는 패스워드가 잘못되었습니다."), dismissButton: .default(Text("닫기")))
-            //            }
+                        .alert(isPresented: $isPwdValid) {
+                            Alert(title: Text("불일치"), message: Text("아이디 또는 패스워드가 잘못되었습니다."), dismissButton: .default(Text("닫기")))
+                        }
             //            .navigationDestination(isPresented: $isLogin) {
             //                MainView(isLogin: $isLogin, userId: $id).navigationBarBackButtonHidden(true)
-            
+            Spacer()
         }
     }
     
