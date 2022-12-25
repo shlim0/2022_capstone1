@@ -8,15 +8,22 @@ import catharsis.user_server.Repository.*;
 import catharsis.user_server.VO.SessionID;
 import catharsis.user_server.VO.UserInfo;
 import catharsis.user_server.Validation.Validation;
+
 import jakarta.servlet.http.HttpServletRequest;
+
+import org.apache.tomcat.util.json.JSONParser;
+import org.json.HTTP;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -42,7 +49,9 @@ public class Controller {
     //회원가입
     @PostMapping("/user")
     public ResponseEntity registration(final HttpServletRequest httpServletRequest) throws Exception {
-        final String user_id = httpServletRequest.getParameter("user_id");
+        final Map<String, Object> obj = requestParser(httpServletRequest);
+        final String user_id = (String) obj.get("user_id");
+
         //아이디 검증
         if(!validation.user_id_validation(user_id)) {
             //302
@@ -56,14 +65,14 @@ public class Controller {
         }
 
         //비밀번호 검증
-        final String user_pwd = httpServletRequest.getParameter("user_pwd");
+        final String user_pwd = (String) obj.get("user_pwd");
         if(!validation.user_pwd_validation(user_pwd)) {
             //303
             return ResponseEntity.status(HttpStatus.SEE_OTHER).build();
         }
 
         //닉네임 검증
-        final String nickname = httpServletRequest.getParameter("nickname");
+        final String nickname = (String) obj.get("nickname");
         if(!validation.nickname_validation(nickname)) {
             //500
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -76,14 +85,14 @@ public class Controller {
         }
 
         //자기소개 검증
-        final String comment = httpServletRequest.getParameter("comment");
-        if(validation.comment_validation(comment)) {
+        final String comment = (String) obj.get("comment");
+        if(comment != null && !validation.comment_validation(comment)) {
             //500
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
 
         //이미지가 있으면 이미지 서버에 저장하고 이미지 경로 데이터베이스에 저장
-        final Object image = httpServletRequest.getParameter("user_image");
+        final Object image = obj.get("user_image");
         String image_path = null;
         Integer image_path_id = null;
         if(image != null) {
@@ -92,16 +101,15 @@ public class Controller {
             image_path_id = repository.insert_image_path(image_path);
         }
 
-        repository.add_user(
-                new User(
-                        user_id,
-                        user_pwd,
-                        nickname,
-                        comment,
-                        image_path_id,
-                        false
-                )
+        final User user = new User(
+                user_id,
+                user_pwd,
+                nickname,
+                comment,
+                image_path_id,
+                false
         );
+        repository.add_user(user);
 
         final String user_ip = getClientIP(httpServletRequest);
         //회원가입 로그 작성
@@ -236,7 +244,7 @@ public class Controller {
         
         //토큰과 계정 연결 해제
         for(APNsToken token : token_list) {
-            repository.unlink_user_id_of_APNs_token(token.getAPNsToken());
+            repository.unlink_user_id_of_APNs_token(token.getId());
         }
 
         //세션 삭제
@@ -255,15 +263,21 @@ public class Controller {
 
     //로그인
     @PostMapping("/session")
-    public ResponseEntity<SessionID> login(final HttpServletRequest httpServletRequest) {
-        final String user_id = httpServletRequest.getParameter("user_id");
-        final String user_pwd = httpServletRequest.getParameter("user_pwd");
-        final String aPNs_token = httpServletRequest.getParameter("APNs_token");
+    public ResponseEntity<SessionID> login(final HttpServletRequest httpServletRequest) throws Exception {
+        final Map<String, Object> obj = requestParser(httpServletRequest);
+        final String user_id = (String) obj.get("user_id");
+        final String user_pwd = (String) obj.get("user_pwd");
+        final String aPNs_token = (String) obj.get("APNs_token");
         final String user_ip = getClientIP(httpServletRequest);
-
+        System.out.println("****************************************************************");
+        System.out.println("AAAA " + user_pwd + " " + repository.get_user_pwd(user_id));
+        System.out.println("****************************************************************");
         //로그인 검증, 검증에 실패하면 에러 발생
         if(!validation.login_validation(user_id, user_pwd)) {
             //300
+            System.out.println("****************************************************************");
+            System.out.println("BBBBB" + user_pwd + " " + repository.get_user_pwd(user_id));
+            System.out.println("****************************************************************");
             return new ResponseEntity<>(HttpStatus.MULTIPLE_CHOICES);
         }
 
@@ -335,4 +349,17 @@ public class Controller {
 
         return ip;
     }
+
+    private Map<String, Object> requestParser (final HttpServletRequest request) throws Exception {
+        StringBuffer jb = new StringBuffer();
+        String line = null;
+        BufferedReader reader = request.getReader();
+        while ((line = reader.readLine()) != null) {
+            jb.append(line);
+        }
+
+        JSONParser parser = new JSONParser(jb.toString());
+        return (Map<String, Object>) parser.parse();
+    }
 }
+

@@ -1,7 +1,9 @@
 package catharsis.user_server.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
@@ -10,6 +12,8 @@ import static catharsis.user_server.Config.Config.*;
 @Data
 @Entity
 @Table(name = "user_log")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserLog {
 
     @Id

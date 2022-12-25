@@ -1,6 +1,6 @@
 CREATE TABLE image_path (
 	image_path_id INT PRIMARY KEY AUTO_INCREMENT,
-	iamge_path VARCHAR(100) NOT NULL UNIQUE
+	image_path VARCHAR(100) NOT NULL UNIQUE
 );
 
 CREATE TABLE user (
@@ -26,7 +26,7 @@ CREATE TABLE system_alert (
 	message VARCHAR(255)
 );
 
-CREATE TABLE APNs_token (
+CREATE TABLE apns_token (
 	APNs_token VARCHAR(100) PRIMARY KEY,
 	user_id VARCHAR(20) NOT NULL,
 	timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

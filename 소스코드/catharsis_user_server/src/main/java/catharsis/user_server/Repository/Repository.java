@@ -89,7 +89,7 @@ public class Repository {
 
     //유저 아이디로 비밀번호 얻음
     public String get_user_pwd(final String user_id) {
-        return userRepository.findById(user_id).orElseThrow().getUserPwd();
+        return userRepository.findById(user_id).get().getUserPwd();
     }
 
     //유저 등록

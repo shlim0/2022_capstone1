@@ -1,11 +1,15 @@
 package catharsis.user_server.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "image_path")
+@NoArgsConstructor
+@AllArgsConstructor
 public class ImagePath {
 
     @Id

@@ -31,6 +31,10 @@ public class Controller {
     @GetMapping("/{path}/image-count")
     public int getImageCount(@PathVariable(value="path") String path) {
         final File dir = new File(Paths.get(ROOT_PATH, path).toString());
+        if (dir.list() == null) {
+            return 0;
+        }
+
         return dir.list().length;
     }
 

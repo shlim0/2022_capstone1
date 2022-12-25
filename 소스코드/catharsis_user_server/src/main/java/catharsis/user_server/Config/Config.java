@@ -9,6 +9,6 @@ public class Config {
     public static final int MAX_DESCRIPTION_LENGTH = 100;
 
     //이미지 서버 주소
-    public static final String IMAGE_SERVER = "119.192.59.11:8080";
+    public static final String IMAGE_SERVER = "127.0.0.1:10002";
 
 }
