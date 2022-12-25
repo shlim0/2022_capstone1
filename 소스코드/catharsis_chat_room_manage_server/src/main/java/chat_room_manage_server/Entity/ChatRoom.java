@@ -1,13 +1,17 @@
 package chat_room_manage_server.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import static chat_room_manage_server.Config.Config.MAX_INFORMATION_LENGTH;
 
 @Data
 @Entity
 @Table(name = "chat_rooms")
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChatRoom {
 
     @Id

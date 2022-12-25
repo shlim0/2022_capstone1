@@ -21,6 +21,7 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'com.turo:pushy:0.13.10'
+	implementation 'org.json:json:20220924'
 }
 
 tasks.named('test') {

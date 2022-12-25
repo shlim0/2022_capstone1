@@ -1,13 +1,17 @@
 package catharsis.announcement_server.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Data
 @Entity
 @Table(name = "system_alert")
+@NoArgsConstructor
+@AllArgsConstructor
 public class SystemAlert {
 
     @Id

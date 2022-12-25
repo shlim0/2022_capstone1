@@ -1,13 +1,17 @@
 package push_server.Controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.tomcat.util.json.JSONParser;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import push_server.Entity.*;
 import push_server.Pusher.Pusher;
 import push_server.Repository.Repository;
 import push_server.VO.PushAlert;
 
+import java.io.BufferedReader;
 import java.util.List;
+import java.util.Map;
 
 public class Controller {
 
@@ -21,10 +25,12 @@ public class Controller {
     }
 
     //장소 정보가 갱신되는 경우
+    @Transactional
     @PostMapping("/push-space-changed")
     public void push_space_change(final HttpServletRequest httpServletRequest) throws Exception {
+        final Map<String, Object> obj = requestParser(httpServletRequest);
         //장소 로그 아이디를 전달받음
-        final int space_log_id = Integer.parseInt(httpServletRequest.getParameter("space_log_id"));
+        final int space_log_id = (Integer) obj.get("space_log_id");
         //장소 로그 아이디로 장소 로그 검색
         final SpaceLog space_log = repository.get_space_log(space_log_id);
         //알림 생성
@@ -46,10 +52,12 @@ public class Controller {
     }
 
     //공지 알림을 받은 경우
+    @Transactional
     @PostMapping("/push-system-message")
     public void push_system_message(final HttpServletRequest httpServletRequest) throws Exception {
+        final Map<String, Object> obj = requestParser(httpServletRequest);
         //공지 아이디를 전달받음
-        final int id = Integer.parseInt(httpServletRequest.getParameter("id"));
+        final int id = (Integer) obj.get("id");
         //공지 아이디로 공지 검색
         final Announcement announcement = repository.get_announcement(id);
         //알림 생성
@@ -64,11 +72,13 @@ public class Controller {
     }
 
     //채팅이 온 경우
+    @Transactional
     @PostMapping("/push-chat")
     public void push_chat(final HttpServletRequest httpServletRequest) throws Exception {
         //final String table_name = httpServletRequest.getParameter("table_name");
+        final Map<String, Object> obj = requestParser(httpServletRequest);
         //채팅 아이디 전달받음
-        final int chat_id = Integer.parseInt(httpServletRequest.getParameter("chat_id"));
+        final int chat_id = (Integer) obj.get("chat_id");
         //채팅 아이디로 채팅 기록 검색
         final ChatLog chat_log = repository.get_chat_log(chat_id);
         //알림 생성
@@ -89,5 +99,17 @@ public class Controller {
                 pusher.push_APNS_message(token, push_alert);
             }
         }
+    }
+
+    private Map<String, Object> requestParser (final HttpServletRequest request) throws Exception {
+        StringBuffer jb = new StringBuffer();
+        String line = null;
+        BufferedReader reader = request.getReader();
+        while ((line = reader.readLine()) != null) {
+            jb.append(line);
+        }
+
+        JSONParser parser = new JSONParser(jb.toString());
+        return (Map<String, Object>) parser.parse();
     }
 }

@@ -1,11 +1,15 @@
 package push_server.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "chat_rooms")
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChatRoom {
 
     @Id

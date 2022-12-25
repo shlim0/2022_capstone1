@@ -26,6 +26,15 @@ public class Repository {
     @Autowired
     private ImagePathRepository imagePathRepository;
 
+    public String get_linked_id_of_APNs_token(final String token) {
+        Optional<APNsToken> ret = aPNsTokenRepository.findById(token);
+        if(ret.isEmpty() || (ret.isPresent() && ret.get().getUserId() == null)) {
+            return null;
+        }
+        else {
+            return ret.get().getUserId();
+        }
+    }
     //해당 아이디와 연결된 모든 토큰 반환
     public List<APNsToken> get_all_APNs_token(final String user_id) {
         return aPNsTokenRepository.findAllByUserId(user_id);
@@ -38,6 +47,7 @@ public class Repository {
         //이미 등록되어 있는 토큰이라면 user_id만 설정해준다.
         if(token.isPresent()) {
             token.get().setUserId(user_id);
+            token.get().setTimestamp(Timestamp.valueOf(LocalDateTime.now()));
         }
         else { //토큰을 새로 생성하고 타임스탬프는 현재 시간으로 설정
             aPNsTokenRepository.save(
@@ -89,7 +99,7 @@ public class Repository {
 
     //유저 아이디로 비밀번호 얻음
     public String get_user_pwd(final String user_id) {
-        return userRepository.findById(user_id).get().getUserPwd();
+        return userRepository.findById(user_id).orElseThrow().getUserPwd();
     }
 
     //유저 등록

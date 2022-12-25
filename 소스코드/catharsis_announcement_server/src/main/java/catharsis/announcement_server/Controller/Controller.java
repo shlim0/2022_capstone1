@@ -6,6 +6,7 @@ import catharsis.announcement_server.VO.SystemMessageID;
 import catharsis.announcement_server.Entity.SystemAlert;
 import catharsis.announcement_server.VO.SystemMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,7 @@ public class Controller {
         this.webClient = webClient;
     }
 
+    @Transactional
     @PostMapping("/push-system-message")
     public void push_system_message(@RequestBody final SystemMessage systemMessage) throws Exception {
         //유효하지 않은 요청

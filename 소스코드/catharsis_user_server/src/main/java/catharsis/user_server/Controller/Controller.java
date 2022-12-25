@@ -11,12 +11,12 @@ import catharsis.user_server.Validation.Validation;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+
 import org.apache.tomcat.util.json.JSONParser;
-import org.json.HTTP;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
@@ -25,6 +25,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
 
 @RestController
 public class Controller {
@@ -47,6 +48,7 @@ public class Controller {
     }
 
     //회원가입
+    @Transactional
     @PostMapping("/user")
     public ResponseEntity registration(final HttpServletRequest httpServletRequest) throws Exception {
         final Map<String, Object> obj = requestParser(httpServletRequest);
@@ -125,9 +127,10 @@ public class Controller {
     }
 
     //회원정보 조회
+    @Transactional
     @GetMapping("/user")
     public UserInfo get_user_info(@RequestParam (name = "user_id") final String user_id) {
-            User user = repository.get_user(user_id);
+            final User user = repository.get_user(user_id);
 
             //해당 사용자의 닉네임, 코멘트, 프로필 사진의 경로를 반환
             return new UserInfo(
@@ -138,20 +141,22 @@ public class Controller {
     }
 
     //회원정보 수정
+    @Transactional
     @PatchMapping("/user")
     public void update_user_info(final HttpServletRequest httpServletRequest) throws Exception {
         int update_check = 0;
-
-        final int session_id = Integer.parseInt(httpServletRequest.getParameter("session_id"));
+        final Map<String, Object> obj = requestParser(httpServletRequest);
+        final int session_id = (Integer) obj.get("session_id");
         final String user_id = repository.get_user_id_by_session_id(session_id);
-        final String user_pwd = httpServletRequest.getParameter("user_pwd");
+        final String user_pwd = (String) obj.get("user_pwd");
+
         //로그인 검증
         if(!validation.login_validation(user_id, user_pwd)) {
             throw new Exception("인증 실패");
         }
 
         //null이면 변경하지 않는 경우에 해당함
-        final String new_user_pwd = httpServletRequest.getParameter("new_user_pwd");
+        final String new_user_pwd = (String) obj.get("new_user_pwd");
         if(new_user_pwd != null) {
             if(!validation.user_pwd_validation(new_user_pwd)) {
                 throw new Exception("유효하지 않은 비밀번호입니다.");
@@ -160,7 +165,7 @@ public class Controller {
         }
 
         //null이면 변경하지 않는 경우에 해당함
-        final String new_nickname = httpServletRequest.getParameter("nickname");
+        final String new_nickname = (String) obj.get("nickname");
         if(new_nickname != null) {
             if(!validation.user_pwd_validation(new_user_pwd)) {
                 throw new Exception("유효하지 않은 비밀번호입니다.");
@@ -172,7 +177,7 @@ public class Controller {
         }
 
         //null이면 변경하지 않는 경우에 해당함
-        final String new_comment = httpServletRequest.getParameter("comment");
+        final String new_comment = (String) obj.get("comment");
         if(new_comment != null) {
             if(!validation.comment_validation(new_comment)) {
                 throw new Exception("자기소개가 너무 깁니다.");
@@ -181,7 +186,7 @@ public class Controller {
         }
 
         //null이면 변경하지 않는 경우에 해당함
-        final Object image = httpServletRequest.getParameter("user_image");
+        final Object image = obj.get("user_image");
         String image_path = null;
         Optional<Integer> image_path_id = null;
         if(image != null) {
@@ -216,6 +221,7 @@ public class Controller {
     }
 
     //회원탈퇴
+    @Transactional
     @DeleteMapping("/user")
     public void unregistration(final HttpServletRequest httpServletRequest) throws Exception {
         final int session_id = httpServletRequest.getIntHeader("session_id");
@@ -262,6 +268,7 @@ public class Controller {
     }
 
     //로그인
+    @Transactional
     @PostMapping("/session")
     public ResponseEntity<SessionID> login(final HttpServletRequest httpServletRequest) throws Exception {
         final Map<String, Object> obj = requestParser(httpServletRequest);
@@ -269,17 +276,20 @@ public class Controller {
         final String user_pwd = (String) obj.get("user_pwd");
         final String aPNs_token = (String) obj.get("APNs_token");
         final String user_ip = getClientIP(httpServletRequest);
-        System.out.println("****************************************************************");
-        System.out.println("AAAA " + user_pwd + " " + repository.get_user_pwd(user_id));
-        System.out.println("****************************************************************");
+
         //로그인 검증, 검증에 실패하면 에러 발생
         if(!validation.login_validation(user_id, user_pwd)) {
             //300
-            System.out.println("****************************************************************");
-            System.out.println("BBBBB" + user_pwd + " " + repository.get_user_pwd(user_id));
-            System.out.println("****************************************************************");
             return new ResponseEntity<>(HttpStatus.MULTIPLE_CHOICES);
         }
+
+        /*
+        //이미 연결된 토큰으로 접속을 시도할 경우 상태코드 301 반환
+        if(validation.is_linked_token(aPNs_token)) {
+            //301
+            return new ResponseEntity<>(HttpStatus.MOVED_PERMANENTLY);
+        }
+         */
 
         //세션 생성 후 반환
         final UserSession session = repository.create_session(user_id);
@@ -300,6 +310,7 @@ public class Controller {
     }
 
     //로그아웃
+    @Transactional
     @DeleteMapping("/session")
     public void logout(final HttpServletRequest httpServletRequest) {
         final int session_id = httpServletRequest.getIntHeader("session_id");

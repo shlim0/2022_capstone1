@@ -1,5 +1,6 @@
 package catharsis.user_server.Validation;
 
+import catharsis.user_server.Entity.APNsToken;
 import catharsis.user_server.Repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,6 +17,9 @@ public class Validation {
         this.repository = repository;
     }
 
+    public boolean is_linked_token(final String token) {
+        return repository.get_linked_id_of_APNs_token(token) != null;
+    }
     //ID 검증
     public boolean user_id_validation(final String user_id) {
         //알파벳 소문자 또는 숫자로 이루어졌으며 길이 제한을 만족하는지의 여부를 반환
