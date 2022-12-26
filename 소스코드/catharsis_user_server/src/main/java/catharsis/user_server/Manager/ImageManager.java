@@ -1,12 +1,16 @@
 package catharsis.user_server.Manager;
 
+import org.json.JSONObject;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.file.Paths;
+import java.net.URI;
 
 import static catharsis.user_server.Config.Config.*;
 
@@ -14,24 +18,27 @@ import static catharsis.user_server.Config.Config.*;
 public class ImageManager {
 
     public String get_new_image_path(final String dir) throws Exception {
-        URL url = new URL(Paths.get(IMAGE_SERVER, dir).toString());
-        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.connect();
+        URI uri = new URI("http://" + IMAGE_SERVER + "/" + dir + "/image-count");
+        RestTemplate rt = new RestTemplate();
+        ResponseEntity<String> response = rt.getForEntity(uri, String.class);
 
-        return conn.getResponseMessage();
+        return response.getBody();
     }
 
     public void save_image(final String full_path, final Object image) throws Exception {
-        URL url = new URL(Paths.get(IMAGE_SERVER, full_path).toString());
-        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate rt = new RestTemplate();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("image", convertObjectToBytes(image));
 
-        conn.setRequestMethod("POST");
-        OutputStream os = conn.getOutputStream();
-        os.write(convertObjectToBytes((image)));
-        os.flush();
+        HttpEntity<String> entity = new HttpEntity<String>(jsonObject.toString(), headers);
 
-        conn.connect();
+        ResponseEntity<Void> response = rt.postForEntity(
+                "http://" + IMAGE_SERVER + "/" + full_path,
+                entity,
+                Void.class
+        );
     }
 
     // object to byte[]
@@ -42,5 +49,4 @@ public class ImageManager {
             return boas.toByteArray();
         }
     }
-
 }
