@@ -60,9 +60,8 @@ public class Repository {
         }
     }
 
-    public void unlink_user_id_of_APNs_token(final String aPNs_token) {
-        APNsToken token = aPNsTokenRepository.findById(aPNs_token).orElseThrow();
-        token.setUserId(null);
+    public void unlink_APNs_token(final String aPNs_token) {
+        aPNsTokenRepository.deleteById(aPNs_token);
     }
     
     //유저 아이디로 개체의 존재 여부를 확인
@@ -135,7 +134,7 @@ public class Repository {
             user.setComment(new_comment);
         }
 
-        if(image_path_id.isPresent()) {
+        if(image_path_id != null) {
             user.setImagePathId(image_path_id.get());
         }
 
@@ -176,5 +175,9 @@ public class Repository {
                     ip
                 )
         );
+    }
+
+    public boolean is_unregistered_user(final String user_id) {
+        return userRepository.findById(user_id).orElseThrow().getWithdrawal();
     }
 }

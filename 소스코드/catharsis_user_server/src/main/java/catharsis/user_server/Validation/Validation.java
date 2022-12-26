@@ -58,14 +58,8 @@ public class Validation {
 
     //로그인 검증
     public boolean login_validation(final String user_id, final String user_pwd) {
-        //해당 아이디를 갖는 유저가 존재하고 전달받은 비밀번호와 비밀번호의 일치 여부를 반환
-        return user_pwd.equals(repository.get_user_pwd(user_id));
+        //해당 아이디를 갖는 유저가 존재하고 탈퇴하지 않았으며 전달받은 비밀번호와 비밀번호의 일치 여부를 반환
+        return user_pwd.equals(repository.get_user_pwd(user_id)) ; //&& !repository.is_unregistered_user(user_id);
     }
-
-    /* 필요하면 추후에 구현
-    public boolean image_validation() {
-        return true;
-    }
-    */
 
 }

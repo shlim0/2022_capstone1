@@ -250,7 +250,7 @@ public class Controller {
         
         //토큰과 계정 연결 해제
         for(APNsToken token : token_list) {
-            repository.unlink_user_id_of_APNs_token(token.getId());
+            repository.unlink_APNs_token(token.getId());
         }
 
         //세션 삭제
@@ -289,6 +289,7 @@ public class Controller {
             //301
             return new ResponseEntity<>(HttpStatus.MOVED_PERMANENTLY);
         }
+
          */
 
         //세션 생성 후 반환
@@ -319,7 +320,7 @@ public class Controller {
         final String user_ip = getClientIP(httpServletRequest);
 
         //토근에 연결된 유저 아이디 제거
-        repository.unlink_user_id_of_APNs_token(aPNs_token);
+        repository.unlink_APNs_token(aPNs_token);
 
         //세션을 데이터베이스에서 삭제
         repository.delete_session(session_id);
