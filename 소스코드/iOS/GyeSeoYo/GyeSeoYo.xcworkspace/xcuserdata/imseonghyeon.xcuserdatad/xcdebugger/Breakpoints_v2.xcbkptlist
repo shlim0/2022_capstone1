@@ -52,12 +52,12 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "44E0D97E-F807-414B-B13A-DEC6898823E0 - 91421068f4304091"
+                  uuid = "44E0D97E-F807-414B-B13A-DEC6898823E0 - e3f7dda9dee4db8a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Image&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in GyeSeoYo.SearchBar.body.getter : some"
-                  moduleName = "GyeSeoYo"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Image&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SearchBar.body.getter : some"
+                  moduleName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/imseonghyeon/Desktop/%E1%84%87%E1%85%A5%E1%84%85%E1%85%B5%E1%86%AB%20%E1%84%8C%E1%85%A1%E1%84%89%E1%85%B5%E1%86%A8%20iOS/GyeSeoYo/GyeSeoYo/SearchBar.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -67,12 +67,12 @@
                   offsetFromSymbolStart = "936">
                </Location>
                <Location
-                  uuid = "44E0D97E-F807-414B-B13A-DEC6898823E0 - d61fbe5da889bea7"
+                  uuid = "44E0D97E-F807-414B-B13A-DEC6898823E0 - cf7762d82c973c2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Image&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in GyeSeoYo.SearchBar.body.getter : some"
-                  moduleName = "GyeSeoYo"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Image&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SearchBar.body.getter : some"
+                  moduleName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/imseonghyeon/Desktop/%E1%84%87%E1%85%A5%E1%84%85%E1%85%B5%E1%86%AB%20%E1%84%8C%E1%85%A1%E1%84%89%E1%85%B5%E1%86%A8%20iOS/GyeSeoYo/GyeSeoYo/SearchBar.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -178,6 +178,22 @@
             endingLineNumber = "24"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3493E77F-6D0D-4AFB-A41B-EFEAE3ECA455"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/View/SpaceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "SpaceMiniView"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
