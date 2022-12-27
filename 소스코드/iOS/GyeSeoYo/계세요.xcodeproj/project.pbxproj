@@ -26,7 +26,6 @@
 		A68CF4BD2955654E0021F5CC /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CF4BC2955654E0021F5CC /* RegistrationView.swift */; };
 		A68CF4BF2955855A0021F5CC /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CF4BE2955855A0021F5CC /* SessionViewModel.swift */; };
 		A69C9404295989DF00C95A38 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C9403295989DF00C95A38 /* LoginView.swift */; };
-		A69C940A2959BFED00C95A38 /* a.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C94092959BFED00C95A38 /* a.swift */; };
 		A69C940C2959C2DC00C95A38 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C940B2959C2DC00C95A38 /* Extension.swift */; };
 		A69C940F295AB07400C95A38 /* SpaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C940E295AB07400C95A38 /* SpaceListViewModel.swift */; };
 		A6CFA6662956E36C009BE8E6 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA6652956E36C009BE8E6 /* SearchBar.swift */; };
@@ -70,7 +69,6 @@
 		A68CF4BC2955654E0021F5CC /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		A68CF4BE2955855A0021F5CC /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
 		A69C9403295989DF00C95A38 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		A69C94092959BFED00C95A38 /* a.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a.swift; sourceTree = "<group>"; };
 		A69C940B2959C2DC00C95A38 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A69C940E295AB07400C95A38 /* SpaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceListViewModel.swift; sourceTree = "<group>"; };
 		A6CFA6652956E36C009BE8E6 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBar.swift; path = "../../../../../../버린 자식 iOS/GyeSeoYo/GyeSeoYo/SearchBar.swift"; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 				A6852656294EC95B00DAF29C /* AfterLoginView.swift */,
 				A6CFA66D2956E9DD009BE8E6 /* SpaceDetailView.swift */,
 				A61E4CEE29583B1C00AD2F71 /* ConfirmView.swift */,
-				A69C94092959BFED00C95A38 /* a.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -386,7 +383,6 @@
 				A61E4CF32958452300AD2F71 /* SpaceImage.swift in Sources */,
 				A6CFA66E2956E9DD009BE8E6 /* SpaceDetailView.swift in Sources */,
 				A6E1BA4B294E155E00921BFD /* MainView.swift in Sources */,
-				A69C940A2959BFED00C95A38 /* a.swift in Sources */,
 				A6E1BA24294E154D00921BFD /* GyeSeoYoApp.swift in Sources */,
 				A61E4CDF2958071000AD2F71 /* Network.swift in Sources */,
 				A61E4CEF29583B1C00AD2F71 /* ConfirmView.swift in Sources */,

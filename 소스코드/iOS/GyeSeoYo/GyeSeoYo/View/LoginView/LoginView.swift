@@ -48,9 +48,10 @@ struct LoginView: View {
                             .frame(width: 280, height: 45)
                             .background(Color.blue)
                             .cornerRadius(10.0)
-                    }.alert(isPresented: $showingAlert) {
-                        Alert(title: Text("불일치"), message: Text("아이디 또는 패스워드가 잘못되었습니다."), dismissButton: .default(Text("닫기")))
                     }
+//                    .alert(isPresented: $showingAlert) {
+//                        Alert(title: Text("불일치"), message: Text("아이디 또는 패스워드가 잘못되었습니다."), dismissButton: .default(Text("닫기")))
+//                    }
 //                }
                 
                 //회원 가입 버튼
