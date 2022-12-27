@@ -9,8 +9,8 @@ import CoreData
 import SwiftUI
 
 struct RegistrationView: View{
-    @ObservedObject var userViewModel = UserViewModel()
-    @ObservedObject var sessionViewModel = SessionViewModel()
+//    @ObservedObject var userViewModel = UserViewModel()
+//    @ObservedObject var sessionViewModel = SessionViewModel()
     @State var id: String
     @State var pwd: String
     @State var pwdCheck: String
@@ -43,15 +43,16 @@ struct RegistrationView: View{
                 .padding(.top, 120)
                 .ignoresSafeArea()
             
-//회원 가입 완료 버튼
-            Button {
-                userViewModel.addUser(id: id, pwd: sessionViewModel.toSHA256(pwd), nickname: nickname, comment: comment)
-                //                if pwd != pwdCheck {
-                //                    isPwdValid = false
-                //                }
-                //                else{
-                //                    isPwdValid = true
-                //                }
+            //회원 가입 완료 버튼
+            AsyncButton {
+                await registration(id, pwd, nickname, comment)
+                //                userViewModel.addUser(id: id, pwd: sessionViewModel.toSHA256(pwd), nickname: nickname, comment: comment)
+                if pwd != pwdCheck {
+                    isPwdValid = true
+                }
+                else{
+                    isPwdValid = false
+                }
             }label: {
                 Text("회원 가입")
                     .font(.headline)
@@ -61,25 +62,26 @@ struct RegistrationView: View{
                     .background(Color.blue)
                     .cornerRadius(10.0)
             }
-                        .alert(isPresented: $isPwdValid) {
-                            Alert(title: Text("불일치"), message: Text("아이디 또는 패스워드가 잘못되었습니다."), dismissButton: .default(Text("닫기")))
-                        }
+            .alert(isPresented: $isPwdValid) {
+                Alert(title: Text("불일치"), message: Text("아이디 또는 패스워드가 잘못되었습니다."), dismissButton: .default(Text("닫기")))
+            }
             //            .navigationDestination(isPresented: $isLogin) {
             //                MainView(isLogin: $isLogin, userId: $id).navigationBarBackButtonHidden(true)
             Spacer()
         }
     }
     
-    struct FieldStyle: ViewModifier {
-        let lightGreyColor = Color(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, opacity: 1.0)
-        func body(content: Content) -> some View {
-            return content
-                .padding()
-                .background(lightGreyColor)
-                .cornerRadius(5.0)
-                .padding(.bottom, 5)
-                .disableAutocorrection(true)
-        }
+    func registration(_ userId: String, _ password: String, _ nickname: String, _ comment: String) async{
+        let registrationInfo: Registration = .init(user_id: userId, user_pwd: password, nickname: nickname, comment: comment)
+        registrationManager.user_id = userId
+        registrationManager.nickname = nickname
+//        print("nickname\(nickname)")
+//        print("--------------------------\(registrationManager.nickname)")
+        registrationManager.comment = comment
+        
+        let data = registrationInfo.toDictionary
+        await Network().postRegistrationData(input_url: "http://119.192.31.33:10001/user", input_params: data!)
+//        print("hello")
+        
     }
 }
-

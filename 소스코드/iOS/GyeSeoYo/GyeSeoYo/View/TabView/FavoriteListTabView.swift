@@ -9,6 +9,9 @@ import SwiftUI
 
 struct FavoriteListTabView: View{
     @Binding var isLogin: Bool
+    @Binding var tabViewTempleteActive: Bool
+    @ObservedObject var sLVM: SpaceListViewModel
+    
     var body: some View {
         if(isLogin == true){
             ZStack {
@@ -22,6 +25,6 @@ struct FavoriteListTabView: View{
                     .fontWeight(.bold)
             }
         }
-        else {LoginView()}
+        else {LoginView(tabViewTempleteActive: $tabViewTempleteActive, isLogin: $isLogin,sLVM: sLVM)}
     }
 }

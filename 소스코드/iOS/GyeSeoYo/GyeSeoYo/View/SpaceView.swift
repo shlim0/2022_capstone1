@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct SpaceView: View{
+    @ObservedObject var sLVM: SpaceListViewModel
+
     var body: some View {
         VStack{
-            ForEach(0..<SpaceList.endIndex){
-                SpaceMiniView(space: SpaceList[$0])
+            ForEach(0..<sLVM.spaceList.count, id: \.self){
+                SpaceMiniView(space: sLVM.spaceList[$0], spaceImage: SpaceImageList[$0])
             }
         }
     }
 }
 
-struct SpaceView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpaceView()
-    }
-}
+//struct SpaceView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SpaceView()
+//    }
+//}
 
 struct SpaceMiniView: View {
     let space: Space
+    let spaceImage: UIImage
     var body: some View {
-        NavigationLink(destination: SpaceDetailView(space: space)){
+        NavigationLink(destination: SpaceDetailView(space: space, spaceImage: spaceImage)){
             VStack(alignment: .leading, spacing: 5){
                 SpaceImage
                 SpaceTitle
@@ -37,7 +40,7 @@ struct SpaceMiniView: View {
     }
     
     var SpaceImage: some View{
-        space.image
+         Image(uiImage: spaceImage)
             .resizable()
             .frame(width: 400, height: 200)
             .clipShape(Rectangle())

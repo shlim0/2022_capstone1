@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpaceDetailView: View{
     let space: Space
+    let spaceImage: UIImage
     var body: some View{
         VStack{
             VStack(alignment: .leading, spacing: 5){
@@ -39,7 +40,7 @@ struct SpaceDetailView: View{
     }
     
     var SpaceImage: some View{
-        space.image
+        Image(uiImage: spaceImage)
             .resizable()
             .frame(width: 400, height: 200)
             .clipShape(Rectangle())
@@ -114,7 +115,7 @@ struct SpaceDetailView: View{
 struct SpaceDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(0..<3){
-            SpaceDetailView(space: SpaceList[$0])
+            SpaceDetailView(space: SpaceList[$0], spaceImage: SpaceImageList[$0])
         }
     }
 }

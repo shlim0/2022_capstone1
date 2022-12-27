@@ -9,15 +9,9 @@ import SwiftUI
 
 struct MyNearTabView: View{
     var body: some View {
-        ZStack {	    
-            Circle()
-                .frame(width: 300, height: 300)
-                .foregroundColor(.green)
-            
-            Text("\(3)")
-                .font(.system(size: 70))
-                .foregroundColor(.white)
-                .fontWeight(.bold)
+        VStack{
+//            Button(action: {Network().getData(input_url: <#T##String#>)}, label: {Text("get")})
+//            Button(action: {Network().postData(input_url: <#T##String#>)}, label: {Text("post")})
         }
     }
 }

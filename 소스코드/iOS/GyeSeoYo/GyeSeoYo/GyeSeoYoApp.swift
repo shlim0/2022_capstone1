@@ -10,11 +10,14 @@ import CoreData
 
 @main
 struct GyeSeoYoApp: App {
-    @State var isLogin: Bool = false
+    @State var isLogin: Bool = true
     @State var userId: String = ""
+    @State var tabViewTempleteActive: Bool = true
+    @ObservedObject var sLVM: SpaceListViewModel = SpaceListViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            MainView(isLogin: $isLogin, userId: $userId)
+            TabViewTemplte(isLogin: $isLogin, userId: $userId, tabViewTempleteActive: tabViewTempleteActive, sLVM: sLVM)
         }
     }
 }

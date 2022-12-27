@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct HomeTabView: View{
-    @State private var searchText = ""
-    
+    @Binding var isLogin: Bool
+    @Binding var userId: String
+    @Binding var tabViewTempleteActive: Bool
+    @ObservedObject var sLVM: SpaceListViewModel
     var body: some View {
         VStack {
             //홈 화면 배너
@@ -18,21 +20,23 @@ struct HomeTabView: View{
                 .resizable()
                 .frame(width: 400, height: 150)
                 .clipShape(Rectangle())
-            //검색 창
-            SearchBar(text: $searchText)
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-            
+        
             ScrollView{
-                SpaceView()
+                SpaceView(sLVM: sLVM)
             }
             .frame(height: 480)
         }
+        .overlay(ButtonViewTemplete(userId: $userId, isLogin: $isLogin, tabViewTempleteActive: $tabViewTempleteActive, sLVM: sLVM)
+            .background(Color.clear)
+            .frame(maxHeight: 50, alignment: .top)
+            .offset(x: 0, y: -350)
+        )
     }
 }
 
 
-struct HomeTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeTabView()
-    }
-}
+//struct HomeTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeTabView()
+//    }
+//}
