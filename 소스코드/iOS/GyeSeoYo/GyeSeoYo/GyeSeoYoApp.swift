@@ -10,7 +10,7 @@ import CoreData
 
 @main
 struct GyeSeoYoApp: App {
-    @State var isLogin: Bool = true
+    @State var isLogin: Bool = false
     @State var userId: String = ""
     @State var tabViewTempleteActive: Bool = true
     @ObservedObject var sLVM: SpaceListViewModel = SpaceListViewModel()
