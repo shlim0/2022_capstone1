@@ -52,27 +52,27 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "44E0D97E-F807-414B-B13A-DEC6898823E0 - e3f7dda9dee4db8a"
+                  uuid = "44E0D97E-F807-414B-B13A-DEC6898823E0 - 91421068f4304091"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Image&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SearchBar.body.getter : some"
-                  moduleName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Image&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in GyeSeoYo.SearchBar.body.getter : some"
+                  moduleName = "GyeSeoYo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/imseonghyeon/Desktop/%E1%84%87%E1%85%A5%E1%84%85%E1%85%B5%E1%86%AB%20%E1%84%8C%E1%85%A1%E1%84%89%E1%85%B5%E1%86%A8%20iOS/GyeSeoYo/GyeSeoYo/SearchBar.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
                   endingLineNumber = "23"
-                  offsetFromSymbolStart = "936">
+                  offsetFromSymbolStart = "1240">
                </Location>
                <Location
-                  uuid = "44E0D97E-F807-414B-B13A-DEC6898823E0 - cf7762d82c973c2"
+                  uuid = "44E0D97E-F807-414B-B13A-DEC6898823E0 - d61fbe5da889bea7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Image&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SearchBar.body.getter : some"
-                  moduleName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.Button&lt;SwiftUI.Image&gt;, SwiftUI.EmptyView&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.cornerRadius(_: CoreGraphics.CGFloat, antialiased: Swift.Bool) -&gt; some&gt;&gt;.0 in GyeSeoYo.SearchBar.body.getter : some"
+                  moduleName = "GyeSeoYo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/imseonghyeon/Desktop/%E1%84%87%E1%85%A5%E1%84%85%E1%85%B5%E1%86%AB%20%E1%84%8C%E1%85%A1%E1%84%89%E1%85%B5%E1%86%A8%20iOS/GyeSeoYo/GyeSeoYo/SearchBar.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -244,36 +244,148 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "C7FF7126-D359-4571-A46F-B528B08EDFB3 - f6f991c0279bc0f1"
+                  uuid = "C7FF7126-D359-4571-A46F-B528B08EDFB3 - f7442e13545eabc1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.body.getter : some"
-                  moduleName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;"
+                  symbolName = "GyeSeoYo.SpaceMiniView.body.getter : some"
+                  moduleName = "GyeSeoYo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/imseonghyeon/Desktop/2022_capstone1/%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3/iOS/GyeSeoYo/GyeSeoYo/View/SpaceView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
                   endingLineNumber = "32"
-                  offsetFromSymbolStart = "732">
+                  offsetFromSymbolStart = "872">
                </Location>
                <Location
-                  uuid = "C7FF7126-D359-4571-A46F-B528B08EDFB3 - 5bd63b991c66fcca"
+                  uuid = "C7FF7126-D359-4571-A46F-B528B08EDFB3 - 466c1cc18630185f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.SpaceImage : some&gt;&gt;.0, &lt;&lt;opaque return type of &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.SpaceTitle : some&gt;&gt;.0, &lt;&lt;opaque return type of &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.SpaceDescription : some&gt;&gt;.0)&gt;&gt; in &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.body.getter : some"
-                  moduleName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;"
+                  symbolName = "closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of GyeSeoYo.SpaceMiniView.SpaceImage : some&gt;&gt;.0, &lt;&lt;opaque return type of GyeSeoYo.SpaceMiniView.SpaceTitle : some&gt;&gt;.0, &lt;&lt;opaque return type of GyeSeoYo.SpaceMiniView.SpaceDescription : some&gt;&gt;.0)&gt;&gt; in GyeSeoYo.SpaceMiniView.body.getter : some"
+                  moduleName = "GyeSeoYo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/imseonghyeon/Desktop/2022_capstone1/%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3/iOS/GyeSeoYo/GyeSeoYo/View/SpaceView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
                   endingLineNumber = "33"
-                  offsetFromSymbolStart = "608">
+                  offsetFromSymbolStart = "712">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F43AE82A-F7F7-4E7A-BE3D-829E95D70F11"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/View/TabView/MyNearTabView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "updateUIView(_:context:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "23547D57-5057-4AC1-A84B-487B751B7183"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/View/TabView/MyNearTabView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "makeUIView(context:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AFBF89F6-EA4A-403C-8E36-4DED0C41EE94"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/View/TabView/MyNearTabView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "LocationManager"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30DDD542-F941-4909-BBCC-D3E61D3B7A23"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/View/TabView/MyNearTabView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "init()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "30DDD542-F941-4909-BBCC-D3E61D3B7A23 - 232620fe136a9fd1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GyeSeoYo.LocationManager.__allocating_init() -&gt; GyeSeoYo.LocationManager"
+                  moduleName = "GyeSeoYo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imseonghyeon/Desktop/2022_capstone1/%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3/iOS/GyeSeoYo/GyeSeoYo/View/TabView/MyNearTabView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "30DDD542-F941-4909-BBCC-D3E61D3B7A23 - d2ea04f7860d2444"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GyeSeoYo.LocationManager.init() -&gt; GyeSeoYo.LocationManager"
+                  moduleName = "GyeSeoYo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imseonghyeon/Desktop/2022_capstone1/%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3/iOS/GyeSeoYo/GyeSeoYo/View/TabView/MyNearTabView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67A04E93-F541-4099-874B-AC36BDE244A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/View/TabView/MyNearTabView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

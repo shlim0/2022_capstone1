@@ -14,7 +14,8 @@ struct GyeSeoYoApp: App {
     @State var userId: String = ""
     @State var tabViewTempleteActive: Bool = true
     @ObservedObject var sLVM: SpaceListViewModel = SpaceListViewModel()
-    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     var body: some Scene {
         WindowGroup {
             TabViewTemplte(isLogin: $isLogin, userId: $userId, tabViewTempleteActive: tabViewTempleteActive, sLVM: sLVM)

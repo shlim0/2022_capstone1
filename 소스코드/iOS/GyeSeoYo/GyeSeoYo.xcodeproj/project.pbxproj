@@ -27,6 +27,14 @@
 		A69C9404295989DF00C95A38 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C9403295989DF00C95A38 /* LoginView.swift */; };
 		A69C940C2959C2DC00C95A38 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C940B2959C2DC00C95A38 /* Extension.swift */; };
 		A69C940F295AB07400C95A38 /* SpaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C940E295AB07400C95A38 /* SpaceListViewModel.swift */; };
+		A6B7C7D2295C279100E1EBB2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7C7C5295C279100E1EBB2 /* MapViewController.swift */; };
+		A6B7C7D3295C279100E1EBB2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B7C7C6295C279100E1EBB2 /* MapViewController.m */; };
+		A6B7C7D4295C279100E1EBB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6B7C7C7295C279100E1EBB2 /* Assets.xcassets */; };
+		A6B7C7D5295C279100E1EBB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B7C7C8295C279100E1EBB2 /* LaunchScreen.storyboard */; };
+		A6B7C7D6295C279100E1EBB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6B7C7CA295C279100E1EBB2 /* Main.storyboard */; };
+		A6B7C7D7295C279100E1EBB2 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B7C7CD295C279100E1EBB2 /* PlacesViewController.m */; };
+		A6B7C7D8295C279100E1EBB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7C7CF295C279100E1EBB2 /* AppDelegate.swift */; };
+		A6B7C7DA295C279100E1EBB2 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7C7D1295C279100E1EBB2 /* PlacesViewController.swift */; };
 		A6CFA6662956E36C009BE8E6 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA6652956E36C009BE8E6 /* SearchBar.swift */; };
 		A6CFA66C2956E59F009BE8E6 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA66B2956E59F009BE8E6 /* SpaceView.swift */; };
 		A6CFA66E2956E9DD009BE8E6 /* SpaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CFA66D2956E9DD009BE8E6 /* SpaceDetailView.swift */; };
@@ -69,6 +77,17 @@
 		A69C9403295989DF00C95A38 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A69C940B2959C2DC00C95A38 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A69C940E295AB07400C95A38 /* SpaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceListViewModel.swift; sourceTree = "<group>"; };
+		A6B7C7C4295C279100E1EBB2 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
+		A6B7C7C5295C279100E1EBB2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A6B7C7C6295C279100E1EBB2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A6B7C7C7295C279100E1EBB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A6B7C7C9295C279100E1EBB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A6B7C7CB295C279100E1EBB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A6B7C7CC295C279100E1EBB2 /* current-place-on-map-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "current-place-on-map-Bridging-Header.h"; sourceTree = "<group>"; };
+		A6B7C7CD295C279100E1EBB2 /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
+		A6B7C7CE295C279100E1EBB2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A6B7C7CF295C279100E1EBB2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A6B7C7D1295C279100E1EBB2 /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		A6CFA6652956E36C009BE8E6 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBar.swift; path = "../../../../../../버린 자식 iOS/GyeSeoYo/GyeSeoYo/SearchBar.swift"; sourceTree = "<group>"; };
 		A6CFA66B2956E59F009BE8E6 /* SpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceView.swift; sourceTree = "<group>"; };
 		A6CFA66D2956E9DD009BE8E6 /* SpaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDetailView.swift; sourceTree = "<group>"; };
@@ -164,6 +183,25 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A6B7C7C3295C279100E1EBB2 /* current-place-on-map */ = {
+			isa = PBXGroup;
+			children = (
+				A6B7C7C4295C279100E1EBB2 /* PlacesViewController.h */,
+				A6B7C7C5295C279100E1EBB2 /* MapViewController.swift */,
+				A6B7C7C6295C279100E1EBB2 /* MapViewController.m */,
+				A6B7C7C7295C279100E1EBB2 /* Assets.xcassets */,
+				A6B7C7C8295C279100E1EBB2 /* LaunchScreen.storyboard */,
+				A6B7C7CA295C279100E1EBB2 /* Main.storyboard */,
+				A6B7C7CC295C279100E1EBB2 /* current-place-on-map-Bridging-Header.h */,
+				A6B7C7CD295C279100E1EBB2 /* PlacesViewController.m */,
+				A6B7C7CE295C279100E1EBB2 /* MapViewController.h */,
+				A6B7C7CF295C279100E1EBB2 /* AppDelegate.swift */,
+				A6B7C7D1295C279100E1EBB2 /* PlacesViewController.swift */,
+			);
+			name = "current-place-on-map";
+			path = "Preview Content/current-place-on-map";
+			sourceTree = "<group>";
+		};
 		A6CFA6642956E364009BE8E6 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +235,7 @@
 		A6E1BA22294E154D00921BFD /* GyeSeoYo */ = {
 			isa = PBXGroup;
 			children = (
+				A6B7C7C3295C279100E1EBB2 /* current-place-on-map */,
 				A69C940D295AB06A00C95A38 /* ViewModel */,
 				A61E4CDD2958070200AD2F71 /* Network */,
 				A658670D2957325E00B41EDF /* Model */,
@@ -321,6 +360,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6E1BA2B294E154E00921BFD /* Preview Assets.xcassets in Resources */,
+				A6B7C7D6295C279100E1EBB2 /* Main.storyboard in Resources */,
+				A6B7C7D5295C279100E1EBB2 /* LaunchScreen.storyboard in Resources */,
+				A6B7C7D4295C279100E1EBB2 /* Assets.xcassets in Resources */,
 				A6E1BA28294E154E00921BFD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,17 +435,21 @@
 			files = (
 				A658670F2957326900B41EDF /* Space.swift in Sources */,
 				A61E4CE5295818A900AD2F71 /* FieldStyle.swift in Sources */,
+				A6B7C7D8295C279100E1EBB2 /* AppDelegate.swift in Sources */,
 				A617044729593C100078BB1B /* AsyncButton.swift in Sources */,
+				A6B7C7D3295C279100E1EBB2 /* MapViewController.m in Sources */,
 				A68CF4BB29555EB80021F5CC /* SpaceViewModel.swift in Sources */,
 				A61E4CF32958452300AD2F71 /* SpaceImage.swift in Sources */,
 				A6CFA66E2956E9DD009BE8E6 /* SpaceDetailView.swift in Sources */,
 				A6E1BA4B294E155E00921BFD /* MainView.swift in Sources */,
 				A6E1BA24294E154D00921BFD /* GyeSeoYoApp.swift in Sources */,
 				A61E4CDF2958071000AD2F71 /* Network.swift in Sources */,
+				A6B7C7D7295C279100E1EBB2 /* PlacesViewController.m in Sources */,
 				A69C9404295989DF00C95A38 /* LoginView.swift in Sources */,
 				A6E1BA41294E155E00921BFD /* SettingButtonView.swift in Sources */,
 				A6852657294EC95B00DAF29C /* AfterLoginView.swift in Sources */,
 				A61AFD7829554FFA00CAC91B /* UserViewModel.swift in Sources */,
+				A6B7C7D2295C279100E1EBB2 /* MapViewController.swift in Sources */,
 				A61E4CED29581C9A00AD2F71 /* Session.swift in Sources */,
 				A68CF4BF2955855A0021F5CC /* SessionViewModel.swift in Sources */,
 				A6CFA66C2956E59F009BE8E6 /* SpaceView.swift in Sources */,
@@ -420,6 +466,7 @@
 				A6CFA6662956E36C009BE8E6 /* SearchBar.swift in Sources */,
 				A68CF4BD2955654E0021F5CC /* RegistrationView.swift in Sources */,
 				A6E1BA4C294E155E00921BFD /* SettingView.swift in Sources */,
+				A6B7C7DA295C279100E1EBB2 /* PlacesViewController.swift in Sources */,
 				A69C940C2959C2DC00C95A38 /* Extension.swift in Sources */,
 				A6E1BA47294E155E00921BFD /* HomeTabView.swift in Sources */,
 				A6E1BA4A294E155E00921BFD /* MyNearTabView.swift in Sources */,
@@ -429,6 +476,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A6B7C7C8295C279100E1EBB2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6B7C7C9295C279100E1EBB2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A6B7C7CA295C279100E1EBB2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6B7C7CB295C279100E1EBB2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A6E1BA2C294E154E00921BFD /* Debug */ = {
@@ -559,8 +625,10 @@
 				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사용자 카메라를 사용합니다.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = YES;
-				INFOPLIST_KEY_NSLocationUsageDescription = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "내 위치 확인을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "내 위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사용자 갤러리를 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -595,8 +663,10 @@
 				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사용자 카메라를 사용합니다.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = YES;
-				INFOPLIST_KEY_NSLocationUsageDescription = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "내 위치 확인을 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "내 위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사용자 갤러리를 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
