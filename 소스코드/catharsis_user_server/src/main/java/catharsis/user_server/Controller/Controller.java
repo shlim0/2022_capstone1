@@ -283,14 +283,11 @@ public class Controller {
             return new ResponseEntity<>(HttpStatus.MULTIPLE_CHOICES);
         }
 
-        /*
         //이미 연결된 토큰으로 접속을 시도할 경우 상태코드 301 반환
         if(validation.is_linked_token(aPNs_token)) {
             //301
             return new ResponseEntity<>(HttpStatus.MOVED_PERMANENTLY);
         }
-
-         */
 
         //세션 생성 후 반환
         final UserSession session = repository.create_session(user_id);
