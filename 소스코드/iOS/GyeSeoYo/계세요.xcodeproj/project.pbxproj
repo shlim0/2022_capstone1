@@ -18,7 +18,6 @@
 		A61E4CE7295818EF00AD2F71 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61E4CE6295818EF00AD2F71 /* Encodable.swift */; };
 		A61E4CE929581BAC00AD2F71 /* SpaceUploadTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61E4CE829581BAC00AD2F71 /* SpaceUploadTabView.swift */; };
 		A61E4CED29581C9A00AD2F71 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61E4CEC29581C9A00AD2F71 /* Session.swift */; };
-		A61E4CEF29583B1C00AD2F71 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61E4CEE29583B1C00AD2F71 /* ConfirmView.swift */; };
 		A61E4CF32958452300AD2F71 /* SpaceImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61E4CF22958452300AD2F71 /* SpaceImage.swift */; };
 		A658670F2957326900B41EDF /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A658670E2957326900B41EDF /* Space.swift */; };
 		A6852657294EC95B00DAF29C /* AfterLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6852656294EC95B00DAF29C /* AfterLoginView.swift */; };
@@ -61,7 +60,6 @@
 		A61E4CE6295818EF00AD2F71 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		A61E4CE829581BAC00AD2F71 /* SpaceUploadTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceUploadTabView.swift; sourceTree = "<group>"; };
 		A61E4CEC29581C9A00AD2F71 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		A61E4CEE29583B1C00AD2F71 /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		A61E4CF22958452300AD2F71 /* SpaceImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceImage.swift; sourceTree = "<group>"; };
 		A658670E2957326900B41EDF /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		A6852656294EC95B00DAF29C /* AfterLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterLoginView.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 				A6E1BA40294E155E00921BFD /* MyPageView.swift */,
 				A6852656294EC95B00DAF29C /* AfterLoginView.swift */,
 				A6CFA66D2956E9DD009BE8E6 /* SpaceDetailView.swift */,
-				A61E4CEE29583B1C00AD2F71 /* ConfirmView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,7 +382,6 @@
 				A6E1BA4B294E155E00921BFD /* MainView.swift in Sources */,
 				A6E1BA24294E154D00921BFD /* GyeSeoYoApp.swift in Sources */,
 				A61E4CDF2958071000AD2F71 /* Network.swift in Sources */,
-				A61E4CEF29583B1C00AD2F71 /* ConfirmView.swift in Sources */,
 				A69C9404295989DF00C95A38 /* LoginView.swift in Sources */,
 				A6E1BA41294E155E00921BFD /* SettingButtonView.swift in Sources */,
 				A6852657294EC95B00DAF29C /* AfterLoginView.swift in Sources */,
@@ -543,6 +539,10 @@
 				DEVELOPMENT_TEAM = TTKL6566T6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "사용자 카메라를 사용합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사용자 갤러리를 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -574,6 +574,10 @@
 				DEVELOPMENT_TEAM = TTKL6566T6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "사용자 카메라를 사용합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사용자 갤러리를 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

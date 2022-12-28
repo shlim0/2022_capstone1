@@ -32,7 +32,7 @@ struct TabViewTemplte: View {
                     .tabItem {
                         Image(systemName: "house")
                         Text("홈 화면")
-                    }.tag(0)
+                    }
                 MyNearTabView()
                     .tabItem {
                         Image(systemName: "location.circle.fill")
@@ -42,7 +42,7 @@ struct TabViewTemplte: View {
                     .tabItem {
                         Image(systemName: "plus.square.fill")
                         Text("장소 등록")
-                    }
+                    }.tag(0)
                     
                 
             }

@@ -142,8 +142,8 @@
             filePath = "GyeSeoYo/Network/Network.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "postSearchData(input_url:input_params:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "GyeSeoYo/Network/Network.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "postSearchData(input_url:input_params:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -194,6 +194,86 @@
             endingLineNumber = "30"
             landmarkName = "SpaceMiniView"
             landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83E44463-EBFC-4E92-93D5-76A5360C1111"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/Util/ImagePicker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "ImagePicker"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2AFB1623-223F-4E7F-A785-B65FEA326207"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/View/TabView/TabViewTemplete.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7FF7126-D359-4571-A46F-B528B08EDFB3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GyeSeoYo/View/SpaceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "C7FF7126-D359-4571-A46F-B528B08EDFB3 - f6f991c0279bc0f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.body.getter : some"
+                  moduleName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imseonghyeon/Desktop/2022_capstone1/%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3/iOS/GyeSeoYo/GyeSeoYo/View/SpaceView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "732">
+               </Location>
+               <Location
+                  uuid = "C7FF7126-D359-4571-A46F-B528B08EDFB3 - 5bd63b991c66fcca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.SpaceImage : some&gt;&gt;.0, &lt;&lt;opaque return type of &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.SpaceTitle : some&gt;&gt;.0, &lt;&lt;opaque return type of &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.SpaceDescription : some&gt;&gt;.0)&gt;&gt; in &#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;.SpaceMiniView.body.getter : some"
+                  moduleName = "&#x1100;&#x1168;&#x1109;&#x1166;&#x110b;&#x116d;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imseonghyeon/Desktop/2022_capstone1/%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3/iOS/GyeSeoYo/GyeSeoYo/View/SpaceView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "608">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

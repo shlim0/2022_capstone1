@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import PhotosUI
 
 struct SpaceUploadTabView: View{
     @State var title: String = "park"
@@ -17,65 +18,100 @@ struct SpaceUploadTabView: View{
     @State var isButtonPushed: Bool = false
     @State var space: Space? = nil
     @State var tags: String = "kimbap"
+    @State var peopleCount: String = "2"
     @Binding var isLogin: Bool
     @Binding var tabViewTempleteActive: Bool
     @ObservedObject var sLVM: SpaceListViewModel
+    @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var selectedImageData: Data? = nil
+    
     
     var body: some View{
         if(isLogin == true){
-            VStack{
-                Text("장소 등록")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 40)
-                TextField("제목", text: $title)
-                    .modifier(FieldStyle())
-                    .autocapitalization(.none)
-                TextField("위치 등록", text: $location)
-                    .modifier(FieldStyle())
-                TextField("가격", text: $price)
-                    .modifier(FieldStyle())
-                TextField("가격 단위", text: $priceUnit)
-                    .modifier(FieldStyle())
-                    .autocapitalization(.none)
-                TextField("해시 태그", text: $tags)
-                    .modifier(FieldStyle())
-                    .autocapitalization(.none)
-                TextField("장소 설명 (선택)", text: $description)
-                    .modifier(FieldStyle())
-                    .autocapitalization(.none)
-                AsyncButton {
-                    let imageURL: String = makeImageBase64Encoding(UIImage(named: "사무실")!)
-                    space = Space(id: 4, session_id: SessionManager.session_id, title: title, distance: 11.3, location: location, description: description, status: 0, price: Int(price)!, priceUnit: priceUnit, rank: 4.32, seller: registrationManager.nickname, peopleCnt: 2, image_count: 1, images: [imageURL], tag_count: 0, tags: [tags])
-                    
-//                    let _ = print("daa \(sLVM.spaceList.count)")
-//                    sLVM.objectWillChange.send()
-                    sLVM.spaceList.append(space!)
-//                    let _ = print("dasd \(sLVM.spaceList.count)")
-                    
-                    print("session id in SpaceUploadTabView: \(SessionManager.session_id)")
-                    SpaceImageList.append(UIImage(named: "사무실")!)
-                    await upload(space!)
-                    
-//                    print(type(of: imageURL))
-//                    print("imageURL\(imageURL)")
-                    
-                }label: {
+            ScrollView{
+                VStack{
                     Text("장소 등록")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 280, height: 45)
-                        .background(Color.blue)
-                        .cornerRadius(10.0)
-                }
-            }.padding()
-                .ignoresSafeArea()
-            
-            
-            //        .navigationDestination(isPresented: $isButtonPushed, destination: ConfirmView())
-            
-            
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 40)
+                        
+                    //갤러리에서 사진 업로드
+                    PhotosPicker(
+                        selection: $selectedItem,
+                        matching: .images,
+                        photoLibrary: .shared()) {
+                            Text("Select a photo")
+                        }
+                        .onChange(of: selectedItem) { newItem in
+                            Task {
+                                // Retrieve selected asset in the form of Data
+                                if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                                    selectedImageData = data
+                                }
+                            }
+                        }
+                    
+                    //사진 미리보기
+                    if let selectedImageData,
+                       let uiImage = UIImage(data: selectedImageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 250, height: 250)
+                    }
+                    
+                    TextField("제목", text: $title)
+                        .modifier(FieldStyle())
+                        .autocapitalization(.none)
+                    TextField("위치 등록", text: $location)
+                        .modifier(FieldStyle())
+                    TextField("가격", text: $price)
+                        .modifier(FieldStyle())
+                    TextField("가격 단위", text: $priceUnit)
+                        .modifier(FieldStyle())
+                        .autocapitalization(.none)
+//                    TextField("해시 태그", text: $tags)
+//                        .modifier(FieldStyle())
+//                        .autocapitalization(.none)
+                    TextField("최대 인원", text: $peopleCount)
+                        .modifier(FieldStyle())
+                        .autocapitalization(.none)
+                    TextField("장소 설명 (선택)", text: $description)
+                        .modifier(FieldStyle())
+                        .autocapitalization(.none)
+                    
+                    
+                    AsyncButton {
+                        if let selectedImageData,
+                            let uiImage = UIImage(data: selectedImageData) {
+                            let imageURL: String = makeImageBase64Encoding(uiImage)
+                            space = Space(id: 4, session_id: SessionManager.session_id, title: title, distance: 0.0, location: location, description: description, status: 0, price: Int(price)!, priceUnit: priceUnit, rank: "New", seller: registrationManager.nickname, peopleCnt: peopleCount, image_count: 1, images: [imageURL], tag_count: 0, tags: [tags])
+                            SpaceImageList.append(uiImage)
+                        }
+                        sLVM.spaceList.append(space!)
+                        
+                        print("session id in SpaceUploadTabView: \(SessionManager.session_id)")
+                        await upload(space!)
+                        
+                        title = ""
+                        location = ""
+                        price = ""
+                        priceUnit = ""
+                        peopleCount = ""
+                        description = ""
+                        
+                    }label: {
+                        Text("장소 등록")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 280, height: 45)
+                            .background(Color.blue)
+                            .cornerRadius(10.0)
+                    }
+                }.padding()
+                    .ignoresSafeArea()
+            }
         }
         else {
             LoginView(tabViewTempleteActive: $tabViewTempleteActive, isLogin: $isLogin, sLVM: sLVM)

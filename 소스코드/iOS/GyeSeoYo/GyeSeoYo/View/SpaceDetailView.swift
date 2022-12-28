@@ -54,8 +54,9 @@ struct SpaceDetailView: View{
             Spacer()
             Image(systemName: "star.fill")
                 .foregroundColor(Color.black)
-            let rank = String(format: "%.2f", space.rank)
-            Text("\(rank)")
+//            let rank = String(format: "%.2f", space.rank)
+//            Text("\(rank)")
+            Text(space.rank)
                 .padding(10)
                 .foregroundColor(Color.black)
             

@@ -31,28 +31,26 @@ struct LoginView: View {
                 Spacer()
                 //로그인 버튼
                 
-                
-//                NavigationLink(destination: MainView(isLogin: $isLogin, userId: $userId).navigationBarBackButtonHidden(true), isActive: $isLogin){
-                    AsyncButton(action: {
-                        login(userId, password)
-                        print("isLogin in LoginView : \(isLogin)")
-                        if isLogin == true{
-                            tabViewTempleteActive = false
-                        }
+                AsyncButton(action: {
+                    login(userId, password)
+                    print("isLogin in LoginView : \(isLogin)")
+                    if isLogin == true{
+                        tabViewTempleteActive = false
                     }
-                    ){
-                        Text("LOGIN")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 280, height: 45)
-                            .background(Color.blue)
-                            .cornerRadius(10.0)
-                    }
-//                    .alert(isPresented: $showingAlert) {
-//                        Alert(title: Text("불일치"), message: Text("아이디 또는 패스워드가 잘못되었습니다."), dismissButton: .default(Text("닫기")))
-//                    }
-//                }
+                }
+                ){
+                    Text("LOGIN")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 280, height: 45)
+                        .background(Color.blue)
+                        .cornerRadius(10.0)
+                }
+                //                    .alert(isPresented: $showingAlert) {
+                //                        Alert(title: Text("불일치"), message: Text("아이디 또는 패스워드가 잘못되었습니다."), dismissButton: .default(Text("닫기")))
+                //                    }
+                //                }
                 
                 //회원 가입 버튼
                 NavigationLink {
@@ -86,7 +84,7 @@ struct LoginView: View {
                 .padding(.top, 120)
                 .ignoresSafeArea()
                 .onAppear (perform : UIApplication.shared.hideKeyboard)
-
+            
             
             Spacer()
         }

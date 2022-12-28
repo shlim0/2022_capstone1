@@ -42,68 +42,6 @@ struct Network{
             print("http Body Error")
         }
         await postDataResponse(request: request)
-        AF.request(request).responseString { (response) in
-            if let statusCode = response.response?.statusCode {
-                //                print("-------------------------statusCode : \(statusCode)")
-            }
-            
-            //////////////////// START
-            //            var dicData : Dictionary<String, Any> = [String : Any]()
-            //            do {
-            //                // 딕셔너리에 데이터 저장 실시
-            //                dicData = try JSONSerialization.jsonObject(with: Data(response.value!.utf8), options: []) as! [String:Any]
-            //            }
-            //            catch {
-            //                print(error.localizedDescription)
-            //            }
-            //            print(dicData)
-            
-            
-            
-            var decoded = try? JSONDecoder().decode(Session.self, from: response.data!)
-            //                print(response.data!)
-            //                SessionManager?.session_id = decoded?.session_id
-            
-            if let statusCode = response.response?.statusCode {
-                //                    print(statusCode)
-                SessionManager.statusCode! = statusCode
-                //                    print("statusCC :\(SessionManager.statusCode!)")
-                //                    print(type(of: SessionManager.statusCode))
-                //                    print(type(of: statusCode))
-            }
-            
-            //             print(decoded?.session_id)
-            if let session_id = decoded?.session_id {
-                //                    print("session_id : \(session_id)")
-                SessionManager.session_id = session_id
-                //                    print("sessionManager session_id : \(SessionManager.session_id)")
-            }
-            
-            print("-------------------------------------------------------")
-            print("SessionManager.session_id : \(SessionManager.session_id)")
-            print("SessionManager.statusCode! : \(SessionManager.statusCode!)")
-            
-            /////////////////// END
-            switch response.result {
-            case .success:
-                if response.response?.statusCode == 200{
-                    print("POST 성공")
-                    
-                    //////////////////////////START
-                    //                    print("session id in Network.swift : \(response.result)")
-                    //                    print("session id in Network.swift : \(response.value!)")
-                    //                    print(type(of: response.value!))
-                    
-                    //////////////////////// END
-                }
-                else{
-                    print("연결은 성공했으나 error")
-                    //                    print(response.result)
-                }
-            case .failure(let error):
-                print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
-            }
-        }
     }
     
     func postDataResponse(request: URLRequest) async{
